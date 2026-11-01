@@ -82,6 +82,18 @@
       "status": "prototype",
       "frames": "Explicit body/tail rectangles in sprite-frames.json",
       "note": "Tail base rotates behind an intact body; no CSS clipping of a whole cat image."
+    },
+    {
+      "file": "jelly-rest.png",
+      "source": "AI-generated from approved Jelly character reference",
+      "status": "prototype",
+      "frames": "Three actual alpha-component rectangles in sprite-frames.json, never uniform grid cropping",
+      "poses": [
+        "sofa side lounge",
+        "seated reading at table",
+        "belly-up bed lounging"
+      ],
+      "note": "Complete attached tails. Separate whole-body poses; subtle breathing/tilt use CSS and honor reduced motion."
     }
   ]
 }
