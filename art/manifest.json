@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "file": "room.png",
+      "source": "AI-generated original background based on approved concept",
+      "status": "prototype",
+      "note": "Not an editable tile atlas; collision rectangles are approximations"
+    },
+    {
+      "file": "jelly.png",
+      "source": "AI-generated using owner's publicly accessible cat photos as reference",
+      "status": "prototype",
+      "note": "Single front-facing transparent sprite; direction atlas pending. Visitor currently grayscale variant."
+    }
+  ]
+}
