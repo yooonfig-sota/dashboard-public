@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "assets": [
     {
       "file": "room.png",
@@ -17,52 +17,22 @@
       "file": "guest-british.png",
       "source": "AI-generated original guest cat animation atlas",
       "status": "prototype",
-      "grid": {
-        "columns": 4,
-        "rows": 5
-      },
-      "animations": {
-        "down": 0,
-        "up": 1,
-        "left": 2,
-        "right": 3,
-        "idle_tail": 4
-      },
-      "note": "Four frames per row; generated frames have minor pose/spacing variation. Guest selection occurs once on client mount."
+      "note": "First 16 frames used for 4-direction walking. British side views regenerated as bipedal. Idle uses dedicated complete body/tail rigs.",
+      "frames": "Explicit alpha-component rectangles in app/components/sprite-frames.json"
     },
     {
       "file": "guest-siamese.png",
       "source": "AI-generated original guest cat animation atlas",
       "status": "prototype",
-      "grid": {
-        "columns": 4,
-        "rows": 5
-      },
-      "animations": {
-        "down": 0,
-        "up": 1,
-        "left": 2,
-        "right": 3,
-        "idle_tail": 4
-      },
-      "note": "Four frames per row; generated frames have minor pose/spacing variation. Guest selection occurs once on client mount."
+      "note": "First 16 frames used for 4-direction walking. British side views regenerated as bipedal. Idle uses dedicated complete body/tail rigs.",
+      "frames": "Explicit alpha-component rectangles in app/components/sprite-frames.json"
     },
     {
       "file": "guest-tuxedo.png",
       "source": "AI-generated original guest cat animation atlas",
       "status": "prototype",
-      "grid": {
-        "columns": 4,
-        "rows": 5
-      },
-      "animations": {
-        "down": 0,
-        "up": 1,
-        "left": 2,
-        "right": 3,
-        "idle_tail": 4
-      },
-      "note": "Four frames per row; generated frames have minor pose/spacing variation. Guest selection occurs once on client mount."
+      "note": "First 16 frames used for 4-direction walking. British side views regenerated as bipedal. Idle uses dedicated complete body/tail rigs.",
+      "frames": "Explicit alpha-component rectangles in app/components/sprite-frames.json"
     },
     {
       "file": "jelly-actions.png",
@@ -73,7 +43,7 @@
         "rows": 2
       },
       "actions": ["rest", "sleep", "eat", "exercise", "read", "work"],
-      "note": "Six separate static activity poses. Public demo controls do not infer real activity."
+      "note": "Actual component rectangles, not uniform cells. Index 0 is replaced by dedicated idle rig."
     },
     {
       "file": "jelly-idle.png",
@@ -83,7 +53,35 @@
         "columns": 4,
         "rows": 1
       },
-      "note": "Four tail-swish frames used for resting preview. Generated frame alignment can be refined."
+      "note": "Retired reference sheet, not rendered. Replaced by complete rig-jelly body and tail."
+    },
+    {
+      "file": "rig-jelly.png",
+      "source": "AI-generated complete body-without-tail plus separately drawn full tail",
+      "status": "prototype",
+      "frames": "Explicit body/tail rectangles in sprite-frames.json",
+      "note": "Tail base rotates behind an intact body; no CSS clipping of a whole cat image."
+    },
+    {
+      "file": "rig-british.png",
+      "source": "AI-generated complete body-without-tail plus separately drawn full tail",
+      "status": "prototype",
+      "frames": "Explicit body/tail rectangles in sprite-frames.json",
+      "note": "Tail base rotates behind an intact body; no CSS clipping of a whole cat image."
+    },
+    {
+      "file": "rig-siamese.png",
+      "source": "AI-generated complete body-without-tail plus separately drawn full tail",
+      "status": "prototype",
+      "frames": "Explicit body/tail rectangles in sprite-frames.json",
+      "note": "Tail base rotates behind an intact body; no CSS clipping of a whole cat image."
+    },
+    {
+      "file": "rig-tuxedo.png",
+      "source": "AI-generated complete body-without-tail plus separately drawn full tail",
+      "status": "prototype",
+      "frames": "Explicit body/tail rectangles in sprite-frames.json",
+      "note": "Tail base rotates behind an intact body; no CSS clipping of a whole cat image."
     }
   ]
 }
