@@ -42,7 +42,14 @@
         "columns": 3,
         "rows": 2
       },
-      "actions": ["rest", "sleep", "eat", "exercise", "read", "work"],
+      "actions": [
+        "rest",
+        "sleep",
+        "eat",
+        "exercise",
+        "read",
+        "work"
+      ],
       "note": "Actual component rectangles, not uniform cells. Index 0 is replaced by dedicated idle rig."
     },
     {
@@ -94,6 +101,13 @@
         "belly-up bed lounging"
       ],
       "note": "Complete attached tails. Separate whole-body poses; subtle breathing/tilt use CSS and honor reduced motion."
+    },
+    {
+      "file": "jelly-walk.png",
+      "source": "AI-generated from approved Jelly character reference",
+      "status": "prototype",
+      "frames": "16 alpha-component rectangles in sprite-frames.json",
+      "note": "Bipedal down/up/left/right walking cycles. Generated prototype with minor texture variation; idle uses complete body/tail rig."
     }
   ]
 }
