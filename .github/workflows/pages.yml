@@ -14,40 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      actions: write
       pages: write
       id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: One-time approved Pages recovery
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const repo = { owner: context.repo.owner, repo: context.repo.repo };
-            const runId = 41288981708;
-            const run = await github.rest.actions.getWorkflowRun({ ...repo, run_id: runId });
-            if (['queued', 'in_progress', 'waiting', 'pending'].includes(run.data.status)) {
-              try {
-                await github.rest.actions.cancelWorkflowRun({ ...repo, run_id: runId });
-                core.info(`Cancelled approved legacy run ${runId}`);
-              } catch (error) {
-                if ([400, 409, 422].includes(error.status)) core.info('Approved legacy run already completed');
-                else throw error;
-              }
-            }
-            try {
-              await github.request('POST /repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}/cancel', {
-                ...repo, pages_deployment_id: '0e4ca28c229ce12ab4a8a38150768eec51a9b2ce'
-              });
-              core.info('Released approved legacy Pages deployment');
-            } catch (error) {
-              if ([400, 404, 409, 422].includes(error.status)) core.info('Approved legacy Pages deployment already completed');
-              else throw error;
-            }
-            await github.request('PUT /repos/{owner}/{repo}/pages', { ...repo, build_type: 'workflow' });
-            core.info('Configured explicit Pages publishing');
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
