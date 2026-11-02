@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 7,
   "assets": [
     {
       "file": "room.png",
@@ -42,7 +42,14 @@
         "columns": 3,
         "rows": 2
       },
-      "actions": ["rest", "sleep", "eat", "exercise", "read", "work"],
+      "actions": [
+        "rest",
+        "sleep",
+        "eat",
+        "exercise",
+        "read",
+        "work"
+      ],
       "note": "Actual component rectangles, not uniform cells. Index 0 is replaced by dedicated idle rig."
     },
     {
@@ -319,8 +326,113 @@
       "source": "AI-generated full-proportion standing Ragdoll body and complete tail matching its A-tier knit walking outfit",
       "status": "prototype",
       "note": "Dedicated standing rig replaces short combined-sheet idle; head width calibrated against front walking."
+    },
+    {
+      "file": "guest-munchkin-outfit.png",
+      "source": "AI-generated original breed atlas based on approved 2D guest sprite style",
+      "status": "prototype",
+      "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
+      "note": "먼치킨: 오커 워크 재킷. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited."
+    },
+    {
+      "file": "guest-devon-rex-outfit.png",
+      "source": "AI-generated original breed atlas based on approved 2D guest sprite style",
+      "status": "prototype",
+      "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
+      "note": "데본 렉스: 러스티 니트. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited."
+    },
+    {
+      "file": "guest-selkirk-rex-outfit.png",
+      "source": "AI-generated original breed atlas based on approved 2D guest sprite style",
+      "status": "prototype",
+      "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
+      "note": "셀커크 렉스: 틸 더플 코트. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited."
+    },
+    {
+      "file": "guest-turkish-van-outfit.png",
+      "source": "AI-generated original breed atlas based on approved 2D guest sprite style",
+      "status": "prototype",
+      "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
+      "note": "터키시 반: 스트라이프 셔츠. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited."
+    },
+    {
+      "file": "guest-somali-outfit.png",
+      "source": "AI-generated original breed atlas based on approved 2D guest sprite style",
+      "status": "prototype",
+      "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
+      "note": "소말리: 포레스트 조끼. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited."
+    },
+    {
+      "file": "guest-exotic-shorthair-outfit.png",
+      "source": "AI-generated original breed atlas based on approved 2D guest sprite style",
+      "status": "prototype",
+      "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
+      "note": "엑조틱 쇼트헤어: 테라코타 카디건. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited."
+    },
+    {
+      "file": "guest-burmese.png",
+      "source": "AI-generated original breed atlas based on approved 2D guest sprite style",
+      "status": "prototype",
+      "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
+      "note": "버미즈: B-tier base fur; no clothing. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited."
+    },
+    {
+      "file": "guest-chartreux.png",
+      "source": "AI-generated original breed atlas based on approved 2D guest sprite style",
+      "status": "prototype",
+      "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
+      "note": "샤트룩스: B-tier base fur; no clothing. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited."
+    },
+    {
+      "file": "guest-american-curl.png",
+      "source": "AI-generated original breed atlas based on approved 2D guest sprite style",
+      "status": "prototype",
+      "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
+      "note": "아메리칸 컬: B-tier base fur; no clothing. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited."
+    },
+    {
+      "file": "guest-ocicat.png",
+      "source": "AI-generated original breed atlas based on approved 2D guest sprite style",
+      "status": "prototype",
+      "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
+      "note": "오시캣: B-tier base fur; no clothing. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited."
+    },
+    {
+      "file": "guest-singapura.png",
+      "source": "AI-generated original breed atlas based on approved 2D guest sprite style",
+      "status": "prototype",
+      "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
+      "note": "싱가푸라: B-tier base fur; no clothing. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited."
+    },
+    {
+      "file": "guest-himalayan.png",
+      "source": "AI-generated original breed atlas based on approved 2D guest sprite style",
+      "status": "prototype",
+      "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
+      "note": "히말라얀: B-tier base fur; no clothing. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited."
+    },
+    {
+      "file": "guest-khao-manee.png",
+      "source": "AI-generated original breed atlas based on approved 2D guest sprite style",
+      "status": "prototype",
+      "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
+      "note": "카오마니: B-tier base fur; no clothing. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited."
+    },
+    {
+      "file": "guest-ragamuffin.png",
+      "source": "AI-generated original breed atlas based on approved 2D guest sprite style",
+      "status": "prototype",
+      "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
+      "note": "라가머핀: B-tier base fur; no clothing. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited."
+    },
+    {
+      "file": "guest-nebelung.png",
+      "source": "AI-generated original breed atlas based on approved 2D guest sprite style",
+      "status": "prototype",
+      "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
+      "note": "네벨룽: B-tier base fur; no clothing. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited. Walking tail redrawn as compact curls to prevent side-view clipping without shrinking the cat or changing the renderer."
     }
   ],
-  "guest_count": 20,
+  "guest_count": 35,
   "guest_catalogue": "app/content/guest-cats.json"
 }

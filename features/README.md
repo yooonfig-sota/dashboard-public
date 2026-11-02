@@ -18,3 +18,6 @@ When regenerating the export, port this component into the room source or
 preserve its mount, script/stylesheet links, and updated application chunk
 references in both HTML and RSC text payloads. Do not edit an existing hashed
 chunk in place: generate a new filename so cached clients load the new code.
+
+## Source integration (35-cat release)
+The current export ports these controls into the original Next.js components (`visitor-cat-controls.tsx` / `visitor-cat-storage.ts`). It preserves the same v1 storage key, selected ID/time, manual reset after 24 hours and tab synchronization. Fresh HTML/RSC references the newly compiled chunks and no longer loads this legacy helper. The old JS/CSS and immutable chunks remain for previously cached pages; do not reinsert their script links into new exports.
