@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "assets": [
     {
       "file": "room.png",
@@ -42,7 +42,14 @@
         "columns": 3,
         "rows": 2
       },
-      "actions": ["rest", "sleep", "eat", "exercise", "read", "work"],
+      "actions": [
+        "rest",
+        "sleep",
+        "eat",
+        "exercise",
+        "read",
+        "work"
+      ],
       "note": "Actual component rectangles, not uniform cells. Index 0 is replaced by dedicated idle rig."
     },
     {
@@ -258,6 +265,40 @@
       "status": "prototype",
       "frames": "Separate complete body and full tail components",
       "note": "Replaces the undersized idle part in the combined sheet. Idle body height is calibrated to the same breed walking head width."
+    },
+    {
+      "file": "guest-angora-outfit.png",
+      "source": "AI-generated original clothing edit referencing approved same-breed atlas",
+      "status": "prototype",
+      "frames": "16 walking poses in first four rows, followed by idle body and complete tail",
+      "note": "S celestial cape and gold trim for Angora; A simple clothes for British, orange tabby and Russian Blue. Runtime uses original separate Angora outfit idle rig for proportions."
+    },
+    {
+      "file": "guest-british-outfit.png",
+      "source": "AI-generated original clothing edit referencing approved same-breed atlas",
+      "status": "prototype",
+      "frames": "16 walking poses in first four rows, followed by idle body and complete tail",
+      "note": "S celestial cape and gold trim for Angora; A simple clothes for British, orange tabby and Russian Blue. Runtime uses original separate Angora outfit idle rig for proportions."
+    },
+    {
+      "file": "guest-orange-tabby-outfit.png",
+      "source": "AI-generated original clothing edit referencing approved same-breed atlas",
+      "status": "prototype",
+      "frames": "16 walking poses in first four rows, followed by idle body and complete tail",
+      "note": "S celestial cape and gold trim for Angora; A simple clothes for British, orange tabby and Russian Blue. Runtime uses original separate Angora outfit idle rig for proportions."
+    },
+    {
+      "file": "guest-russian-blue-outfit.png",
+      "source": "AI-generated original clothing edit referencing approved same-breed atlas",
+      "status": "prototype",
+      "frames": "16 walking poses in first four rows, followed by idle body and complete tail",
+      "note": "S celestial cape and gold trim for Angora; A simple clothes for British, orange tabby and Russian Blue. Runtime uses original separate Angora outfit idle rig for proportions."
+    },
+    {
+      "file": "rig-angora-outfit.png",
+      "source": "AI-generated full-proportion clothed Angora body and complete tail matching S walking outfit",
+      "status": "prototype",
+      "note": "Separate idle anatomy avoids squat pose; head width calibrated against front walking frames."
     }
   ],
   "guest_count": 20,
