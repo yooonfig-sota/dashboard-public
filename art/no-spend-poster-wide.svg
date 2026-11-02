@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="100" viewBox="0 0 320 100">
+  <title>무지출 챌린지 화이팅!</title>
+  <g shape-rendering="crispEdges">
+    <path fill="#48362b" d="M4 0h312v4h4v92h-4v4H4v-4H0V4h4z"/>
+    <path fill="#98704c" d="M4 4h312v92H4z"/>
+    <path fill="#c29968" d="M4 4h312v4H8v84H4z"/>
+    <path fill="#654832" d="M312 8h4v88H8v-4h304z"/>
+    <path fill="#ded5b9" d="M10 10h300v80H10z"/>
+    <path fill="#f3edda" d="M12 12h296v76H12z"/>
+    <path fill="#e7ddc1" d="M16 16h288v2H16zM16 82h288v2H16z"/>
+    <path fill="#a2aa86" d="M20 22h4v4h-4zM296 22h4v4h-4z"/>
+    <path fill="#c3a465" d="M28 64h8v4h4v8h-4v4h-8v-4h-4v-8h4zM284 64h8v4h4v8h-4v4h-8v-4h-4v-8h4z"/>
+    <path fill="#ead39a" d="M28 68h8v4h-8zM284 68h8v4h-8z"/>
+  </g>
+  <g text-anchor="middle" font-family="sans-serif" fill="#354b3a" font-weight="700">
+    <text x="160" y="53" font-size="38">무지출 챌린지</text>
+    <text x="160" y="80" font-size="24">화이팅!</text>
+  </g>
+</svg>

@@ -1,5 +1,5 @@
 {
-  "version": 8,
+  "version": 9,
   "assets": [
     {
       "file": "room.png",
@@ -436,7 +436,19 @@
       "file": "no-spend-poster.svg",
       "source": "Original vector pixel-art poster made for this room",
       "status": "original",
-      "note": "Separate decorative overlay on the center wall. Korean lettering remains vector text; coin and frame use integer pixel geometry. Shared by public and owner rooms."
+      "note": "Previous portrait poster, retained for older cached public pages. Current room uses no-spend-poster-wide.svg."
+    },
+    {
+      "file": "room-no-left-window.png",
+      "source": "AI image edit of original room.png: replace left window and curtains with matching plaster wall",
+      "status": "prototype",
+      "note": "Current room background. Original room.png preserved. Right window, furniture and room coordinates retained."
+    },
+    {
+      "file": "no-spend-poster-wide.svg",
+      "source": "Original vector pixel-art poster made for this room",
+      "status": "original",
+      "note": "Landscape 320x100 pixel frame with enlarged Korean headline; mounted on the wall replacing the left window. Shared by public and owner rooms."
     }
   ],
   "guest_count": 35,
