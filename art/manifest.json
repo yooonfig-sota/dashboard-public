@@ -1,5 +1,5 @@
 {
-  "version": 7,
+  "version": 8,
   "assets": [
     {
       "file": "room.png",
@@ -431,6 +431,12 @@
       "status": "prototype",
       "frames": "16 four-direction walking frames followed by complete idle body and separate full tail",
       "note": "네벨룽: B-tier base fur; no clothing. Existing cat IDs and assets preserved. Complete alpha parts and head scale audited. Walking tail redrawn as compact curls to prevent side-view clipping without shrinking the cat or changing the renderer."
+    },
+    {
+      "file": "no-spend-poster.svg",
+      "source": "Original vector pixel-art poster made for this room",
+      "status": "original",
+      "note": "Separate decorative overlay on the center wall. Korean lettering remains vector text; coin and frame use integer pixel geometry. Shared by public and owner rooms."
     }
   ],
   "guest_count": 35,

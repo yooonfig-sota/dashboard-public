@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="152" viewBox="0 0 128 152">
+  <title>무지출 챌린지 화이팅!</title>
+  <g shape-rendering="crispEdges">
+    <path fill="#48362b" d="M4 0h120v4h4v144h-4v4H4v-4H0V4h4z"/>
+    <path fill="#98704c" d="M4 4h120v144H4z"/>
+    <path fill="#c29968" d="M4 4h120v4H8v136H4z"/>
+    <path fill="#654832" d="M120 8h4v140H8v-4h112z"/>
+    <path fill="#ded5b9" d="M10 10h108v132H10z"/>
+    <path fill="#f3edda" d="M12 12h104v128H12z"/>
+    <path fill="#e7ddc1" d="M16 16h96v2H16zM16 134h96v2H16z"/>
+    <path fill="#a2aa86" d="M16 22h4v4h-4zM108 22h4v4h-4z"/>
+    <path fill="#465c45" d="M45 33h38v4h8v8h4v24h-4v8h-8v4H45v-4h-8v-8h-4V45h4v-8h8z"/>
+    <path fill="#c3a465" d="M47 37h34v4h8v8h2v16h-2v8h-8v4H47v-4h-8v-8h-2V49h2v-8h8z"/>
+    <path fill="#ead39a" d="M49 41h30v4h6v4H47v6h-4v10h-2V49h4v-4h4z"/>
+    <path fill="#82683c" d="M49 50h4v13h4V51h4v12h6V51h4v12h4V50h4v17h-8v4H57v-4h-8z"/>
+    <path fill="#f3edda" d="M43 57h42v3H43z"/>
+    <path fill="#627650" d="M88 31h4v4h-4zM96 27h4v4h-4zM92 23h4v4h-4z"/>
+    <path fill="#d1c9aa" d="M25 119h78v1H25z"/>
+  </g>
+  <g text-anchor="middle" font-family="sans-serif" fill="#354b3a" font-weight="700">
+    <text x="64" y="99" font-size="15" letter-spacing="1">무지출 챌린지</text>
+    <text x="64" y="114" font-size="12">화이팅!</text>
+    <text x="64" y="131" font-size="6" letter-spacing="1.5" font-weight="400">LESS, BUT BETTER</text>
+  </g>
+</svg>
