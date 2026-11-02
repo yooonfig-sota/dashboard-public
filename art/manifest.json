@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "assets": [
     {
       "file": "room.png",
@@ -42,14 +42,7 @@
         "columns": 3,
         "rows": 2
       },
-      "actions": [
-        "rest",
-        "sleep",
-        "eat",
-        "exercise",
-        "read",
-        "work"
-      ],
+      "actions": ["rest", "sleep", "eat", "exercise", "read", "work"],
       "note": "Actual component rectangles, not uniform cells. Index 0 is replaced by dedicated idle rig."
     },
     {
@@ -108,6 +101,165 @@
       "status": "prototype",
       "frames": "16 alpha-component rectangles in sprite-frames.json",
       "note": "Bipedal down/up/left/right walking cycles. Generated prototype with minor texture variation; idle uses complete body/tail rig."
+    },
+    {
+      "file": "guest-orange-tabby.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "치즈 태비",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-silver-tabby.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "아메리칸 쇼트헤어",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-russian-blue.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "러시안 블루",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-ragdoll.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "랙돌",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-maine-coon.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "메인쿤",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-norwegian.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "노르웨이숲",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-persian.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "페르시안",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-angora.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "터키시 앙고라",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-bengal.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "벵갈",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-abyssinian.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "아비시니안",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-sphynx.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "스핑크스",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-scottish-fold.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "스코티시 폴드",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-bombay.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "봄베이",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-birman.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "버만",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-oriental.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "오리엔탈 쇼트헤어",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-tortoiseshell.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "카오스",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "guest-snowshoe.png",
+      "source": "AI-generated original variant using the approved British walking/idle art as style and anatomy references",
+      "status": "prototype",
+      "character": "스노우슈",
+      "frames": "16 rendered bipedal walking frames with explicit source rectangles; most sheets also contain idle parts",
+      "note": "Neutral closed mouth; four walking directions. Metadata uses actual alpha components, not uniform grid clipping."
+    },
+    {
+      "file": "rig-maine-coon.png",
+      "source": "AI-generated dedicated full standing body and complete tail matching approved rig proportions",
+      "status": "prototype",
+      "frames": "Separate complete body and full tail components",
+      "note": "Replaces the undersized idle part in the combined sheet. Idle body height is calibrated to the same breed walking head width."
+    },
+    {
+      "file": "rig-orange-tabby.png",
+      "source": "AI-generated dedicated full standing body and complete tail matching approved rig proportions",
+      "status": "prototype",
+      "frames": "Separate complete body and full tail components",
+      "note": "Replaces the undersized idle part in the combined sheet. Idle body height is calibrated to the same breed walking head width."
+    },
+    {
+      "file": "rig-angora.png",
+      "source": "AI-generated dedicated full standing body and complete tail matching approved rig proportions",
+      "status": "prototype",
+      "frames": "Separate complete body and full tail components",
+      "note": "Replaces the undersized idle part in the combined sheet. Idle body height is calibrated to the same breed walking head width."
     }
-  ]
+  ],
+  "guest_count": 20,
+  "guest_catalogue": "app/content/guest-cats.json"
 }
