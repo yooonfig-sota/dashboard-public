@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "assets": [
     {
       "file": "room.png",
@@ -42,14 +42,7 @@
         "columns": 3,
         "rows": 2
       },
-      "actions": [
-        "rest",
-        "sleep",
-        "eat",
-        "exercise",
-        "read",
-        "work"
-      ],
+      "actions": ["rest", "sleep", "eat", "exercise", "read", "work"],
       "note": "Actual component rectangles, not uniform cells. Index 0 is replaced by dedicated idle rig."
     },
     {
@@ -299,6 +292,33 @@
       "source": "AI-generated full-proportion clothed Angora body and complete tail matching S walking outfit",
       "status": "prototype",
       "note": "Separate idle anatomy avoids squat pose; head width calibrated against front walking frames."
+    },
+    {
+      "file": "guest-tuxedo-outfit.png",
+      "source": "AI-generated clothing edit referencing the existing approved same-breed atlas",
+      "status": "prototype",
+      "frames": "16 four-direction walking poses, front standing idle body without tail and one complete separate tail",
+      "note": "A-tier charcoal jacket and navy tie. Existing face, coat and biped style retained. Idle head width calibrated against front walking; no detached costume overlays."
+    },
+    {
+      "file": "guest-ragdoll-outfit.png",
+      "source": "AI-generated clothing edit referencing the existing approved same-breed atlas",
+      "status": "prototype",
+      "frames": "16 four-direction walking poses, front standing idle body without tail and one complete separate tail",
+      "note": "A-tier powder blue knit pullover. Existing face, coat and biped style retained. Idle head width calibrated against front walking; no detached costume overlays."
+    },
+    {
+      "file": "guest-bengal-outfit.png",
+      "source": "AI-generated clothing edit referencing the existing approved same-breed atlas",
+      "status": "prototype",
+      "frames": "16 four-direction walking poses, front standing idle body without tail and one complete separate tail",
+      "note": "A-tier tan safari jacket. Existing face, coat and biped style retained. Idle head width calibrated against front walking; no detached costume overlays."
+    },
+    {
+      "file": "rig-ragdoll-outfit.png",
+      "source": "AI-generated full-proportion standing Ragdoll body and complete tail matching its A-tier knit walking outfit",
+      "status": "prototype",
+      "note": "Dedicated standing rig replaces short combined-sheet idle; head width calibrated against front walking."
     }
   ],
   "guest_count": 20,
