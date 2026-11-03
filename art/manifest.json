@@ -449,6 +449,12 @@
       "source": "Original vector pixel-art poster made for this room",
       "status": "original",
       "note": "Landscape 320x100 pixel frame with enlarged Korean headline; mounted on the wall replacing the left window. Shared by public and owner rooms."
+    },
+    {
+      "file": "neighborhood.svg",
+      "source": "Original hand-authored SVG pixel map",
+      "status": "prototype",
+      "note": "집 앞 산책길: 집, 벤치, 꽃밭, 연못. 고정 화면과 별도 충돌 영역 사용. 외부 게임 에셋 미사용."
     }
   ],
   "guest_count": 35,
