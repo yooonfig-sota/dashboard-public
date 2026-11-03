@@ -1,5 +1,5 @@
 {
-  "version": 10,
+  "version": 11,
   "assets": [
     {
       "file": "room.png",
@@ -502,6 +502,54 @@
       "source": "사용자 요청으로 새로 생성한 독자적인 투명 도트 알",
       "status": "prototype",
       "note": "껍데기 두 레이어만 분리. 고양이 원본과 Canvas는 유지."
+    },
+    {
+      "file": "tiles/grove-spring.webp",
+      "source": "사용자 요청으로 생성한 독자적인 사계절 도트 아트",
+      "status": "prototype",
+      "note": "16종 수목·식생, 실제 알파 경계로 분리. 고정 시드 군락과 다양한 크기. 생성 원본 보존, lossless WebP."
+    },
+    {
+      "file": "tiles/ground-spring.webp",
+      "source": "사용자 요청으로 생성한 독자적인 사계절 도트 아트",
+      "status": "prototype",
+      "note": "잔디·흙길·돌 포장·모래 각 4변형. 2×2 이동 칸에 이어 그리는 도트 질감. 생성 원본 보존, 고품질 WebP(95), 전송량 절감."
+    },
+    {
+      "file": "tiles/grove-summer.webp",
+      "source": "사용자 요청으로 생성한 독자적인 사계절 도트 아트",
+      "status": "prototype",
+      "note": "16종 수목·식생, 실제 알파 경계로 분리. 고정 시드 군락과 다양한 크기. 생성 원본 보존, lossless WebP."
+    },
+    {
+      "file": "tiles/ground-summer.webp",
+      "source": "사용자 요청으로 생성한 독자적인 사계절 도트 아트",
+      "status": "prototype",
+      "note": "잔디·흙길·돌 포장·모래 각 4변형. 2×2 이동 칸에 이어 그리는 도트 질감. 생성 원본 보존, 고품질 WebP(95), 전송량 절감."
+    },
+    {
+      "file": "tiles/grove-autumn.webp",
+      "source": "사용자 요청으로 생성한 독자적인 사계절 도트 아트",
+      "status": "prototype",
+      "note": "16종 수목·식생, 실제 알파 경계로 분리. 고정 시드 군락과 다양한 크기. 생성 원본 보존, lossless WebP."
+    },
+    {
+      "file": "tiles/ground-autumn.webp",
+      "source": "사용자 요청으로 생성한 독자적인 사계절 도트 아트",
+      "status": "prototype",
+      "note": "잔디·흙길·돌 포장·모래 각 4변형. 2×2 이동 칸에 이어 그리는 도트 질감. 생성 원본 보존, 고품질 WebP(95), 전송량 절감."
+    },
+    {
+      "file": "tiles/grove-winter.webp",
+      "source": "사용자 요청으로 생성한 독자적인 사계절 도트 아트",
+      "status": "prototype",
+      "note": "16종 수목·식생, 실제 알파 경계로 분리. 고정 시드 군락과 다양한 크기. 생성 원본 보존, lossless WebP."
+    },
+    {
+      "file": "tiles/ground-winter.webp",
+      "source": "사용자 요청으로 생성한 독자적인 사계절 도트 아트",
+      "status": "prototype",
+      "note": "잔디·흙길·돌 포장·모래 각 4변형. 2×2 이동 칸에 이어 그리는 도트 질감. 생성 원본 보존, 고품질 WebP(95), 전송량 절감."
     }
   ],
   "guest_count": 35,
