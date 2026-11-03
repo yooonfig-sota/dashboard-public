@@ -1,5 +1,5 @@
 {
-  "version": 9,
+  "version": 10,
   "assets": [
     {
       "file": "room.png",
@@ -42,14 +42,7 @@
         "columns": 3,
         "rows": 2
       },
-      "actions": [
-        "rest",
-        "sleep",
-        "eat",
-        "exercise",
-        "read",
-        "work"
-      ],
+      "actions": ["rest", "sleep", "eat", "exercise", "read", "work"],
       "note": "Actual component rectangles, not uniform cells. Index 0 is replaced by dedicated idle rig."
     },
     {
@@ -479,6 +472,36 @@
       "source": "AI-generated original coastal life-game landscape; seasonal variants preserve the spring reference layout",
       "status": "prototype",
       "note": "1536x1024 winter world background, lossless WebP conversion verified pixel-identical to generated PNG. Visible region is cropped by a following camera; separate paths, colliders and foreground masks are authored in outdoor-world.ts. No existing game assets used."
+    },
+    {
+      "file": "tiles/props-spring.webp",
+      "source": "사용자 승인에 따라 생성한 독자적인 계절별 픽셀 RPG 오브젝트 시트",
+      "status": "prototype",
+      "note": "4×4 모듈 배치, 각 칸의 알파 경계와 원본 비율로 렌더링. 지형·충돌은 world-tiles.ts의 별도 데이터. Lossless WebP."
+    },
+    {
+      "file": "tiles/props-summer.webp",
+      "source": "사용자 승인에 따라 생성한 독자적인 계절별 픽셀 RPG 오브젝트 시트",
+      "status": "prototype",
+      "note": "4×4 모듈 배치, 각 칸의 알파 경계와 원본 비율로 렌더링. 지형·충돌은 world-tiles.ts의 별도 데이터. Lossless WebP."
+    },
+    {
+      "file": "tiles/props-autumn.webp",
+      "source": "사용자 승인에 따라 생성한 독자적인 계절별 픽셀 RPG 오브젝트 시트",
+      "status": "prototype",
+      "note": "4×4 모듈 배치, 각 칸의 알파 경계와 원본 비율로 렌더링. 지형·충돌은 world-tiles.ts의 별도 데이터. Lossless WebP."
+    },
+    {
+      "file": "tiles/props-winter.webp",
+      "source": "사용자 승인에 따라 생성한 독자적인 계절별 픽셀 RPG 오브젝트 시트",
+      "status": "prototype",
+      "note": "4×4 모듈 배치, 각 칸의 알파 경계와 원본 비율로 렌더링. 지형·충돌은 world-tiles.ts의 별도 데이터. Lossless WebP."
+    },
+    {
+      "file": "tiles/hatch-egg.webp",
+      "source": "사용자 요청으로 새로 생성한 독자적인 투명 도트 알",
+      "status": "prototype",
+      "note": "껍데기 두 레이어만 분리. 고양이 원본과 Canvas는 유지."
     }
   ],
   "guest_count": 35,
