@@ -1,5 +1,5 @@
 {
-  "version": 11,
+  "version": 12,
   "assets": [
     {
       "file": "room.png",
@@ -550,6 +550,76 @@
       "source": "사용자 요청으로 생성한 독자적인 사계절 도트 아트",
       "status": "prototype",
       "note": "잔디·흙길·돌 포장·모래 각 4변형. 2×2 이동 칸에 이어 그리는 도트 질감. 생성 원본 보존, 고품질 WebP(95), 전송량 절감."
+    },
+    {
+      "file": "guest-siberian.webp",
+      "source": "기존 도트 스타일을 참고해 생성한 신규 S급 고양이의 독자 아트",
+      "status": "prototype",
+      "note": "개별 0.1% S급. 네 방향 16개 보행 프레임.",
+      "frames": "실제 알파 경계: app/components/sprite-frames.json"
+    },
+    {
+      "file": "rig-siberian.webp",
+      "source": "기존 도트 스타일을 참고해 생성한 신규 S급 고양이의 독자 아트",
+      "status": "prototype",
+      "note": "완전한 정면 대기 몸과 별도 꼬리. 원본 비율·얼굴 크기 보정, lossless WebP.",
+      "frames": "실제 알파 경계: app/components/sprite-frames.json"
+    },
+    {
+      "file": "guest-balinese.webp",
+      "source": "기존 도트 스타일을 참고해 생성한 신규 S급 고양이의 독자 아트",
+      "status": "prototype",
+      "note": "개별 0.1% S급. 네 방향 16개 보행 프레임.",
+      "frames": "실제 알파 경계: app/components/sprite-frames.json"
+    },
+    {
+      "file": "rig-balinese.webp",
+      "source": "기존 도트 스타일을 참고해 생성한 신규 S급 고양이의 독자 아트",
+      "status": "prototype",
+      "note": "완전한 정면 대기 몸과 별도 꼬리. 원본 비율·얼굴 크기 보정, lossless WebP.",
+      "frames": "실제 알파 경계: app/components/sprite-frames.json"
+    },
+    {
+      "file": "guest-laperm.webp",
+      "source": "기존 도트 스타일을 참고해 생성한 신규 S급 고양이의 독자 아트",
+      "status": "prototype",
+      "note": "개별 0.1% S급. 네 방향 16개 보행 프레임.",
+      "frames": "실제 알파 경계: app/components/sprite-frames.json"
+    },
+    {
+      "file": "rig-laperm.webp",
+      "source": "기존 도트 스타일을 참고해 생성한 신규 S급 고양이의 독자 아트",
+      "status": "prototype",
+      "note": "완전한 정면 대기 몸과 별도 꼬리. 원본 비율·얼굴 크기 보정, lossless WebP.",
+      "frames": "실제 알파 경계: app/components/sprite-frames.json"
+    },
+    {
+      "file": "guest-japanese-bobtail.webp",
+      "source": "기존 도트 스타일을 참고해 생성한 신규 S급 고양이의 독자 아트",
+      "status": "prototype",
+      "note": "개별 0.1% S급. 네 방향 16개 보행 프레임.",
+      "frames": "실제 알파 경계: app/components/sprite-frames.json"
+    },
+    {
+      "file": "rig-japanese-bobtail.webp",
+      "source": "기존 도트 스타일을 참고해 생성한 신규 S급 고양이의 독자 아트",
+      "status": "prototype",
+      "note": "완전한 정면 대기 몸과 별도 꼬리. 원본 비율·얼굴 크기 보정, lossless WebP.",
+      "frames": "실제 알파 경계: app/components/sprite-frames.json"
+    },
+    {
+      "file": "guest-toyger.webp",
+      "source": "기존 도트 스타일을 참고해 생성한 신규 S급 고양이의 독자 아트",
+      "status": "prototype",
+      "note": "개별 0.1% S급. 네 방향 16개 보행 프레임.",
+      "frames": "실제 알파 경계: app/components/sprite-frames.json"
+    },
+    {
+      "file": "rig-toyger.webp",
+      "source": "기존 도트 스타일을 참고해 생성한 신규 S급 고양이의 독자 아트",
+      "status": "prototype",
+      "note": "완전한 정면 대기 몸과 별도 꼬리. 원본 비율·얼굴 크기 보정, lossless WebP.",
+      "frames": "실제 알파 경계: app/components/sprite-frames.json"
     }
   ],
   "guest_count": 35,
