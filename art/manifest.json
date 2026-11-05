@@ -1,5 +1,5 @@
 {
-  "version": 12,
+  "version": 13,
   "assets": [
     {
       "file": "room.png",
@@ -620,6 +620,34 @@
       "status": "prototype",
       "note": "완전한 정면 대기 몸과 별도 꼬리. 원본 비율·얼굴 크기 보정, lossless WebP.",
       "frames": "실제 알파 경계: app/components/sprite-frames.json"
+    },
+    {
+      "file": "guest-american-bobtail-outfit.png",
+      "source": "AI로 생성한 독자 S급 고양이 아틀라스",
+      "status": "prototype",
+      "note": "4방향 16보행 + 전용 대기 몸/꼬리. 생성 원본 픽셀 유지.",
+      "frames": "app/components/sprite-frames.json의 실제 알파 경계"
+    },
+    {
+      "file": "guest-egyptian-mau-outfit.png",
+      "source": "AI로 생성한 독자 S급 고양이 아틀라스",
+      "status": "prototype",
+      "note": "4방향 16보행 + 전용 대기 몸/꼬리. 생성 원본 픽셀 유지.",
+      "frames": "app/components/sprite-frames.json의 실제 알파 경계"
+    },
+    {
+      "file": "guest-savannah-outfit.png",
+      "source": "AI로 생성한 독자 S급 고양이 아틀라스",
+      "status": "prototype",
+      "note": "4방향 16보행 + 전용 대기 몸/꼬리. 생성 원본 픽셀 유지.",
+      "frames": "app/components/sprite-frames.json의 실제 알파 경계"
+    },
+    {
+      "file": "guest-neva-masquerade-outfit.png",
+      "source": "AI로 생성한 독자 S급 고양이 아틀라스",
+      "status": "prototype",
+      "note": "4방향 16보행 + 전용 대기 몸/꼬리. 생성 원본 픽셀 유지.",
+      "frames": "app/components/sprite-frames.json의 실제 알파 경계"
     }
   ],
   "guest_count": 35,
