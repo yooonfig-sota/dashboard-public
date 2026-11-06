@@ -1,5 +1,5 @@
 {
-  "version": 15,
+  "version": 16,
   "assets": [
     {
       "file": "room.png",
@@ -696,6 +696,12 @@
       "source": "사용자 요청으로 생성한 독자적인 사계절 은행나무 도트 아틀라스",
       "status": "prototype",
       "note": "4열 변형 × 봄/여름/가을/겨울 4행. 잎이 풍성한 수직형 은행나무, 고정 군락 43그루. 실제 알파 경계로 분리해 원본 비율을 유지한다. 생성 도구의 원본을 보존하고 lossless WebP로 배포."
+    },
+    {
+      "file": "tiles/ginkgo-leaf.svg",
+      "source": "직접 제작한 32px 격자 원본 은행잎 도트 SVG",
+      "status": "prototype",
+      "note": "가을 은행잎 이벤트의 고정 타일 아이템. 황금빛 부채꼴 잎·잎맥·줄기·땅 그림자, 외부 게임 에셋 미사용."
     }
   ],
   "guest_count": 35,
