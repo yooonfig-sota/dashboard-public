@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>🍂 대한민국 천년 은행나무 지도</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root{
+    /* 500·600·700: 초록색 계열 */
+    --c500:#15803D; /* 짙은 숲 초록 */
+    --c600:#16A34A; /* 싱그러운 초록 */
+    --c700:#84CC16; /* 상큼한 연두 라임 */
+
+    /* 800·900·1000: 노란색 계열 (1000살이 가장 화사한 샛노란 골드) */
+    --c800:#FDE047; /* 은은하고 맑은 레몬 노랑 */
+    --c900:#FACC15; /* 따뜻하고 풍성한 개나리 노랑 */
+    --c1000:#EAB308; /* 가장 예쁜 대표 샛노란 은행잎 골드 */
+    --ring:#FEF08A; /* 1000살 이상 반짝이는 샛노란 테두리 */
+
+    --ink:#1f2419; --sub:#6b715f; --line:#e6e8dd; --bg:#f7f6f0; --card:#ffffff; --accent:#16a34a;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+    background:var(--bg); color:var(--ink); display:flex; flex-direction:column; height:100dvh; overflow:hidden;
+    position:relative;
+  }
+  /* ── 은행잎 낙하 애니메이션 캔버스 (클릭 통과, 화면 전체 오버레이) ── */
+  #leafCanvas{
+    position:fixed; top:0; left:0; width:100%; height:100%;
+    pointer-events:none; z-index:2500;
+  }
+  /* ── 상단 컨트롤 패널 ── */
+  #panel{
+    background:var(--card); border-bottom:1px solid var(--line);
+    padding:12px 16px 11px; z-index:1000; flex:0 0 auto;
+    box-shadow:0 2px 14px rgba(60,60,30,.07);
+  }
+  #panel h1{font-size:1.22rem; letter-spacing:-.02em; display:flex; align-items:center; gap:8px;}
+  #panel h1 .em{font-size:1.32rem;}
+  #subtitle{margin-top:2px; font-size:.8rem; color:var(--sub); letter-spacing:-.01em;}
+  #controls{margin-top:9px; display:flex; gap:9px; flex-wrap:wrap; align-items:center;}
+  #filters{display:flex; gap:6px; flex-wrap:wrap; align-items:center;}
+  .fbtn{
+    border:1.5px solid var(--line); background:#fff; color:var(--ink);
+    padding:5px 12px; border-radius:999px; font-size:.82rem; font-weight:700; cursor:pointer;
+    transition:all .15s ease; font-family:inherit; user-select:none;
+    display:inline-flex; align-items:center; gap:4px;
+  }
+  .fbtn:hover{border-color:#c9cdb8;}
+  .fbtn.active{
+    border-color:transparent !important;
+    box-shadow:0 3px 8px rgba(60,60,30,.18);
+  }
+  .fbtn .fdot{
+    display:inline-block; width:7.5px; height:7.5px; border-radius:50%;
+  }
+  #searchwrap{flex:1; min-width:180px; max-width:340px; position:relative;}
+  #search{
+    width:100%; padding:7px 12px 7px 34px; border:1.5px solid var(--line); border-radius:10px;
+    font-size:.86rem; font-family:inherit; background:#fff; outline:none; transition:border-color .15s;
+  }
+  #search:focus{border-color:var(--accent);}
+  #searchwrap .ico{position:absolute; left:11px; top:50%; transform:translateY(-50%); font-size:.88rem; opacity:.55;}
+  #noresult{display:none; margin-top:8px; font-size:.82rem; color:#b3403a;}
+  /* ── 지도 ── */
+  #map{flex:1 1 auto; min-height:0; z-index:1;}
+  .leaflet-container{font-family:inherit;}
+  /* ── 부채꼴 은행잎 마커 ── */
+  .ginkgo-leaf-marker{
+    background:none !important; border:none !important;
+    cursor:pointer;
+    transition:transform .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .ginkgo-leaf-marker:hover{
+    transform:scale(1.28) translateY(-4px);
+    z-index:9999 !important;
+  }
+  .ginkgo-leaf-svg{
+    display:block;
+    filter:drop-shadow(0 3px 6px rgba(25,35,15,.36));
+  }
+  /* ── 팝업 카드 ── */
+  .ginkgo-popup .leaflet-popup-content-wrapper{
+    border-radius:16px; box-shadow:0 10px 34px rgba(40,40,20,.22); padding:0; overflow:hidden;
+  }
+  .ginkgo-popup .leaflet-popup-content{margin:0; width:290px !important; max-width:86vw;}
+  .ginkgo-popup .leaflet-popup-tip{box-shadow:none;}
+  .gp-head{padding:12px 14px 10px; color:#fff; position:relative;}
+  .gp-head .badge{
+    display:inline-block; background:rgba(255,255,255,.24); border:1px solid rgba(255,255,255,.45);
+    border-radius:999px; padding:2px 10px; font-size:.72rem; font-weight:800; letter-spacing:.01em;
+  }
+  .gp-head .age{position:absolute; right:14px; top:11px; font-size:.78rem; font-weight:700; opacity:.95;}
+  .gp-title{padding:12px 14px 4px;}
+  .gp-title .nm{font-size:1.02rem; font-weight:800; letter-spacing:-.02em; line-height:1.3;}
+  .gp-title .dz{
+    display:inline-block; margin-top:6px; font-size:.73rem; font-weight:700; color:#2e6f40;
+    background:#e8f4ec; border-radius:999px; padding:3px 10px;
+  }
+  .gp-specs{display:flex; gap:8px; margin:10px 14px 0;}
+  .gp-specs .sp{
+    flex:1; background:#f5f6ef; border-radius:10px; padding:7px 10px; font-size:.72rem; color:var(--sub);
+  }
+  .gp-specs .sp b{display:block; font-size:.86rem; color:var(--ink); margin-top:2px;}
+  .gp-addr{margin:10px 14px 0; font-size:.78rem; color:#4c5245; line-height:1.45;}
+  .gp-addr::before{content:"📍 "; }
+  .gp-lore{
+    margin:10px 14px 0; font-size:.79rem; line-height:1.55; color:#3c4232;
+    background:#faf9f2; border-left:3px solid #d9dcbd; padding:8px 10px; border-radius:0 8px 8px 0;
+  }
+  .gp-links{display:flex; gap:8px; margin:12px 14px 14px;}
+  .gp-links a{
+    flex:1; text-align:center; text-decoration:none; font-size:.78rem; font-weight:700;
+    padding:8px 4px; border-radius:9px; transition:filter .15s;
+  }
+  .gp-links a.kakao{background:#FEE500; color:#191600;}
+  .gp-links a.naver{background:#03C75A; color:#fff;}
+  .gp-links a:hover{filter:brightness(.94);}
+  .gp-count{
+    position:absolute; right:12px; bottom:10px; font-size:.7rem; font-weight:800;
+    background:rgba(255,255,255,.25); border-radius:999px; padding:2px 8px; color:#fff;
+  }
+  /* ── 출처 안내 ── */
+  #credit{
+    position:absolute; left:10px; bottom:12px; z-index:800; background:rgba(255,255,255,.92);
+    border-radius:8px; padding:5px 9px; font-size:.64rem; color:#84867a; line-height:1.5; max-width:74vw;
+    box-shadow:0 2px 8px rgba(40,40,20,.12);
+  }
+  @media (max-width:600px){
+    #panel{padding:10px 12px 9px;}
+    #panel h1{font-size:1.02rem;}
+    #subtitle{font-size:.74rem;}
+    .fbtn{padding:4px 9px; font-size:.76rem;}
+    #search{padding:6px 10px 6px 30px; font-size:.82rem;}
+    .ginkgo-popup .leaflet-popup-content{width:270px !important;}
+  }
+</style>
+</head>
+<body>
+
+<canvas id="leafCanvas"></canvas>
+
+<div id="panel">
+  <h1><span class="em">🍂</span> 대한민국 천년 은행나무 지도</h1>
+  <p id="subtitle">초록에서 샛노란 황금빛으로 물드는 전국 명품 은행나무</p>
+  <div id="controls">
+    <div id="filters"></div>
+    <div id="searchwrap">
+      <span class="ico">🔍</span>
+      <input id="search" type="text" placeholder="나무 이름·지역·주소로 검색 (예: 양평, 용문사, 반계리)" autocomplete="off">
+    </div>
+  </div>
+  <div id="noresult">선택된 조건에 맞는 은행나무가 없습니다.</div>
+</div>
+
+<div id="map">
+  <div id="credit">📌 좌표·제원은 국가유산포털, 각 지자체 고시 자료와 카카오 지오코딩 기준이며 일부 위치는 근사치입니다.<br>수령은 전통적 통용 추정치로, 최근 과학적 측정과 다를 수 있습니다.</div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const ALL_TAGS = ["600살", "700살", "800살", "900살", "1000살 이상", "500살"];
+
+/*
+  사용자 요청 색상 체계:
+  - 500·600·700: 초록색 계열 (진녹 → 초록 → 연두)
+  - 800·900·1000: 노란색 계열 (은은한 노랑 → 화사한 노랑 → 가장 예쁜 샛노란 골드)
+*/
+const COLORS = {
+  "500살": "#15803D",      /* 짙은 숲 초록 */
+  "600살": "#16A34A",      /* 싱그러운 초록 */
+  "700살": "#84CC16",      /* 연두색 라임 */
+  "800살": "#FDE047",      /* 맑은 레몬빛 노랑 */
+  "900살": "#FACC15",      /* 화사한 개나리 노랑 */
+  "1000살 이상": "#EAB308" /* 가장 예쁜 대표 샛노란 은행잎 골드 */
+};
+
+const BTN_TEXT_COLORS = {
+  "500살": "#ffffff",
+  "600살": "#ffffff",
+  "700살": "#ffffff",
+  "800살": "#713f12",
+  "900살": "#713f12",
+  "1000살 이상": "#ffffff"
+};
+
+const SIZES = {
+  "500살": 26,
+  "600살": 28,
+  "700살": 30,
+  "800살": 33,
+  "900살": 36,
+  "1000살 이상": 40
+};
+
+const TREES = [
+ {
+  "name": "양평 용문사 은행나무",
+  "desig": "천연기념물 제30호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 1,100년",
+  "tag": "1000살 이상",
+  "h": "38.8m",
+  "c": "약 15m",
+  "addr": "경기도 양평군 용문면 신점리 626-1",
+  "lore": "마의태자가 심었다는 전설이 있다. 2024년 측정 결과 고려 목종 때인 1007년에 태어난 것으로 밝혀졌으며, 한국에서 가장 키가 큰 은행나무다.",
+  "lat": 37.5498025201611,
+  "lng": 127.571008232075
+ },
+ {
+  "name": "원주 반계리 은행나무",
+  "desig": "천연기념물 제167호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "800~1,300년(측정 1,317년)",
+  "tag": "1000살 이상",
+  "h": "26.2m",
+  "c": "14.47m",
+  "addr": "강원특별자치도 원주시 문막읍 반계리 1495-1",
+  "lore": "7그루가 모여 있는 듯 풍성하게 퍼진 수형으로 '대한민국에서 가장 아름다운 은행나무'로 평가받는다. 과학적 측정으로 1,317살이 확인되었다.",
+  "lat": 37.2942080688415,
+  "lng": 127.788422377426
+ },
+ {
+  "name": "영월 하송리 은행나무",
+  "desig": "천연기념물 제76호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "1,000~1,200년",
+  "tag": "1000살 이상",
+  "h": "약 21m",
+  "c": "약 11m",
+  "addr": "강원특별자치도 영월군 영월읍 하송리 190-4",
+  "lore": "남한강이 내려다보이는 마을 당산나무로, 천 년이 넘는 세월을 지낸 거목이다.",
+  "lat": 37.1792368572569,
+  "lng": 128.464598863774
+ },
+ {
+  "name": "금산 요광리 은행나무",
+  "desig": "천연기념물 제84호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 1,000년",
+  "tag": "1000살 이상",
+  "h": "24m",
+  "c": "12.94m",
+  "addr": "충청남도 금산군 추부면 요광리 329-8",
+  "lore": "500년 전 나무 아래에 정자(行館)를 지어 '행정 은행나무'라고도 불렸다.",
+  "lat": 36.2119526407988,
+  "lng": 127.492588027854
+ },
+ {
+  "name": "금산 보석사 은행나무",
+  "desig": "천연기념물 제365호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 1,000년",
+  "tag": "1000살 이상",
+  "h": "34m",
+  "c": "10.72m",
+  "addr": "충청남도 금산군 남이면 석동리 709",
+  "lore": "보석사 대웅전 앞에 선 거목으로, 지장보살의 화신이라는 전설이 전한다.",
+  "lat": 36.0535705439415,
+  "lng": 127.47553338949
+ },
+ {
+  "name": "괴산 읍내리 은행나무",
+  "desig": "천연기념물 제165호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 1,000년",
+  "tag": "1000살 이상",
+  "h": "16.4m",
+  "c": "7.35m",
+  "addr": "충청북도 괴산군 청안면 청안읍내로3길 8",
+  "lore": "청안초등학교 교정에 있는 나무로, 여러 차례 가지가 상한 뒤에도 곧은 원줄기가 중심을 잡아 분재 같은 단정한 수형을 이룬다.",
+  "lat": 36.7725303101549,
+  "lng": 127.639817557217
+ },
+ {
+  "name": "영동 영국사 은행나무",
+  "desig": "천연기념물 제223호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 1,000년",
+  "tag": "1000살 이상",
+  "h": "약 22m",
+  "c": "약 11m",
+  "addr": "충청북도 영동군 양산면 누교리 1395-14",
+  "lore": "서쪽으로 뻗은 가지가 땅에 닿아 뿌리를 내려 독립된 개체가 되었다. 매년 가을 당산제와 문화제를 지낸다.",
+  "lat": 36.1581674,
+  "lng": 127.6110502
+ },
+ {
+  "name": "당진 면천 은행나무",
+  "desig": "천연기념물 제551호",
+  "kind": "국가",
+  "count": 2,
+  "ageLabel": "약 1,100년(2그루)",
+  "tag": "1000살 이상",
+  "h": "약 20m",
+  "c": "약 10m",
+  "addr": "충청남도 당진시 동문1길 3",
+  "lore": "고려 개국공신 복지겸과 관련된 전설이 있는 나무로, 옛 면천도호부 관아의 풍치목이다.",
+  "lat": 36.817662545429,
+  "lng": 126.667606127606
+ },
+ {
+  "name": "강릉 장덕리 은행나무",
+  "desig": "천연기념물 제166호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 800년",
+  "tag": "800살",
+  "h": "26m",
+  "c": "9.63m",
+  "addr": "강원특별자치도 강릉시 주문진읍 장덕리 643",
+  "lore": "본래 암나무였으나 지나가던 늙은 스님이 열매 냄새를 싫어해 부적을 붙인 뒤부터 열매를 맺지 않게 되었다는 전설이 있는 수나무다.",
+  "lat": 37.8776856276658,
+  "lng": 128.7831290692
+ },
+ {
+  "name": "강화 볼음도 은행나무",
+  "desig": "천연기념물 제304호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 800년",
+  "tag": "800살",
+  "h": "약 18m",
+  "c": "약 7m",
+  "addr": "인천광역시 강화군 서도면 볼음도리 산186",
+  "lore": "약 800년 전 홍수로 황해도 연백에서 이 섬까지 떠내려온 나무를 심었다고 전한다.",
+  "lat": 37.6765041267578,
+  "lng": 126.174671194024
+ },
+ {
+  "name": "인천 장수동 은행나무",
+  "desig": "천연기념물 제562호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 800년",
+  "tag": "800살",
+  "h": "약 25m",
+  "c": "약 8m",
+  "addr": "인천광역시 남동구 장수동 63-6",
+  "lore": "인천대공원 뒷산 마을의 당산나무로, 2021년 천연기념물로 지정되었다.",
+  "lat": 37.4603061,
+  "lng": 126.7696435
+ },
+ {
+  "name": "안동 용계리 은행나무",
+  "desig": "천연기념물 제175호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 700년",
+  "tag": "700살",
+  "h": "31m",
+  "c": "13.6m",
+  "addr": "경상북도 안동시 길안면 용계리 744",
+  "lore": "용계사 터에 남은 당산나무로, 마을의 길흉을 알려주는 신목으로 섬겨 왔다.",
+  "lat": 36.4914982039252,
+  "lng": 128.924442118243
+ },
+ {
+  "name": "청도 적천사 은행나무",
+  "desig": "천연기념물 제402호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 800년",
+  "tag": "800살",
+  "h": "약 25m",
+  "c": "약 8m",
+  "addr": "경상북도 청도군 청도읍 월곡안길 28-293",
+  "lore": "적천사 대웅전 뒤에 선 사찰 수구목이다.",
+  "lat": 35.6169010401137,
+  "lng": 128.732088451451
+ },
+ {
+  "name": "함양 운곡리 은행나무",
+  "desig": "천연기념물 제406호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 800년",
+  "tag": "800살",
+  "h": "38m",
+  "c": "약 9m",
+  "addr": "경상남도 함양군 서하면 운곡리 779",
+  "lore": "마을 한가운데 선 당산나무로, 지금도 마을 수호 신목으로 섬겨지고 있다.",
+  "lat": 35.6334404422114,
+  "lng": 127.687680281816
+ },
+ {
+  "name": "강진 성동리 은행나무",
+  "desig": "천연기념물 제385호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 800년",
+  "tag": "800살",
+  "h": "32m",
+  "c": "7.2m",
+  "addr": "전라남도 강진군 병영면 성동리 70",
+  "lore": "전라병영성에서 250m쯤 떨어진 곳에 서 있으며, 나무 주변에는 고인돌 5기가 자리하고 있다.",
+  "lat": 34.7201835685857,
+  "lng": 126.820024359584
+ },
+ {
+  "name": "세종 임난수 은행나무",
+  "desig": "천연기념물(2022년 지정)",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 600년",
+  "tag": "600살",
+  "h": "약 18m",
+  "c": "약 6m",
+  "addr": "세종특별자치시 세종동 88-5",
+  "lore": "2022년 천연기념물로 지정된 나무로, 옛 연기 지역 마을의 당산나무다.",
+  "lat": 36.5042347341264,
+  "lng": 127.291894290413
+ },
+ {
+  "name": "의령 세간리 은행나무",
+  "desig": "천연기념물 제302호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "550~600년",
+  "tag": "600살",
+  "h": "약 17m",
+  "c": "약 7m",
+  "addr": "경상남도 의령군 유곡면 세간리 808",
+  "lore": "세간 마을의 당산나무로, 3그루가 함께 지정되어 보호되고 있다.",
+  "lat": 35.4389701049956,
+  "lng": 128.344483807413
+ },
+ {
+  "name": "화순 야사리 은행나무",
+  "desig": "천연기념물 제303호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 500년",
+  "tag": "500살",
+  "h": "약 20m",
+  "c": "약 7m",
+  "addr": "전라남도 화순군 이서면 야사리 182-1",
+  "lore": "약사(藥師) 마을 터에 있다 하여 '야사리 은행나무'로 불리며, 4그루가 함께 지정되어 있다.",
+  "lat": 35.1106766232806,
+  "lng": 127.07804467627
+ },
+ {
+  "name": "울주 구량리 은행나무",
+  "desig": "천연기념물 제64호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 550년",
+  "tag": "500살",
+  "h": "약 20m",
+  "c": "약 8m",
+  "addr": "울산광역시 울주군 두서면 구량리 860",
+  "lore": "한성판윤 이지대가 벼슬을 버리고 돌아와 심었다고 전한다. 2003년 태풍 매미로 수관의 1/3이 훼손되었다가 복구되었다.",
+  "lat": 35.6216397139563,
+  "lng": 129.134949017008
+ },
+ {
+  "name": "서울 문묘 은행나무",
+  "desig": "천연기념물 제59호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 500년",
+  "tag": "500살",
+  "h": "약 20m",
+  "c": "약 6m",
+  "addr": "서울특별시 종로구 성균관로 31",
+  "lore": "성균관 명륜당 앞에서 조선의 학자들을 굽어보던 나무. 윤탁이 심었다는 설과 임진왜란 후 중건 때 심었다는 설이 전한다.",
+  "lat": 37.5854861328543,
+  "lng": 126.996705105892
+ },
+ {
+  "name": "담양 봉안리 은행나무",
+  "desig": "천연기념물 제482호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 500년",
+  "tag": "500살",
+  "h": "약 18m",
+  "c": "약 6m",
+  "addr": "전라남도 담양군 무정면 봉안리 1043-3",
+  "lore": "술지마을 입구의 당산나무로, 오래전부터 마을 수호 신목으로 섬겨 왔다.",
+  "lat": 35.2956530490125,
+  "lng": 127.03453626092
+ },
+ {
+  "name": "청주 압각수",
+  "desig": "천연기념물(2026년 지정)",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 900년",
+  "tag": "900살",
+  "h": "약 20m",
+  "c": "약 8m",
+  "addr": "충북 청주시 상당구 남사로 117",
+  "lore": "이색 일행이 역모로 옥에 갇혔을 때 홍수가 나자 이 나무 위에서 살았고, 이를 들은 공양왕이 무죄임을 알고 방면했다는 기록이 있다. '압각수'는 은행나무의 한자 이름(鴨脚樹)이다.",
+  "lat": 36.6329752284646,
+  "lng": 127.487779345663
+ },
+ {
+  "name": "부여 주암리 은행나무",
+  "desig": "천연기념물 제320호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "약 1,000년",
+  "tag": "1000살 이상",
+  "h": "약 18m",
+  "c": "약 8m",
+  "addr": "충청남도 부여군 내산면 주암리 148-1",
+  "lore": "꿩이 사는 바위(雉巖)라는 마을 이름을 지닌 주암리의 당산나무로, 4그루가 함께 지정되어 있다.",
+  "lat": 36.2943370952227,
+  "lng": 126.775075725053
+ },
+ {
+  "name": "청도 대전리 은행나무",
+  "desig": "천연기념물 제301호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "400~500년",
+  "tag": "500살",
+  "h": "약 18m",
+  "c": "약 6m",
+  "addr": "경상북도 청도군 이서면 대전리 638",
+  "lore": "대전 마을의 당산나무로, 3그루가 함께 지정되어 보호되고 있다.",
+  "lat": 35.6590773391418,
+  "lng": 128.633782225378
+ },
+ {
+  "name": "구미 농소리 은행나무",
+  "desig": "천연기념물 제225호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "400~500년",
+  "tag": "500살",
+  "h": "21.6m",
+  "c": "11.85m",
+  "addr": "경상북도 구미시 옥성면 이곡1길 10",
+  "lore": "뿌리에서 솟은 웅순(본줄기 새로)이 본줄기만큼 자라 여러 그루가 얽힌 듯한 수형이 특징이다.",
+  "lat": 36.3132318443171,
+  "lng": 128.279602759226
+ },
+ {
+  "name": "김천 조룡리 은행나무",
+  "desig": "천연기념물 제300호",
+  "kind": "국가",
+  "count": 1,
+  "ageLabel": "440~500년",
+  "tag": "500살",
+  "h": "약 18m",
+  "c": "약 7m",
+  "addr": "경상북도 김천시 대덕면 조룡리 51",
+  "lore": "조룡 마을의 당산나무로, 3그루가 함께 지정되어 보호되고 있다.",
+  "lat": 35.9553681551277,
+  "lng": 127.977811353625
+ },
+ {
+  "name": "도봉 방학동 은행나무",
+  "desig": "서울특별시 자연유산(구 기념물 제33호)",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "550~800년",
+  "tag": "600살",
+  "h": "약 20m",
+  "c": "약 6m",
+  "addr": "서울특별시 도봉구 방학동",
+  "lore": "나라에 큰일이 나면 불이 난다고 전해지며, 1949년과 1978년 실제로 불이 났다.",
+  "lat": 37.6658975489539,
+  "lng": 127.026875382235
+ },
+ {
+  "name": "금천 시흥동 은행나무",
+  "desig": "서울특별시 보호수",
+  "kind": "시도",
+  "count": 3,
+  "ageLabel": "약 800년(3그루)",
+  "tag": "800살",
+  "h": "약 17m",
+  "c": "약 5m",
+  "addr": "서울특별시 금천구 시흥동",
+  "lore": "조선 초 금천현 관아를 세울 때 심은 풍치목으로 전해지며, 도심 한복판에서 800년을 넘겼다.",
+  "lat": 37.4476688042386,
+  "lng": 126.908452220723
+ },
+ {
+  "name": "노원 중계동 은행나무",
+  "desig": "서울특별시 보호수",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 625년",
+  "tag": "600살",
+  "h": "약 18m",
+  "c": "약 6m",
+  "addr": "서울특별시 노원구 중계동",
+  "lore": "중계동 마을의 당산나무로, 노원구의 상징나무이기도 하다.",
+  "lat": 37.6525550467646,
+  "lng": 127.077488598779
+ },
+ {
+  "name": "과천 온온사 은행나무",
+  "desig": "경기도 지정 문화재",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 600년",
+  "tag": "600살",
+  "h": "약 20m",
+  "c": "약 6m",
+  "addr": "경기도 과천시 원문동 온온사",
+  "lore": "관악산 기슭 온온사 뜰에 선 사찰 수구목이다.",
+  "lat": 37.4363843,
+  "lng": 126.9924996
+ },
+ {
+  "name": "구리 아천동 은행나무",
+  "desig": "구리시 보호수",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 930년",
+  "tag": "900살",
+  "h": "24.4m",
+  "c": "9.9m",
+  "addr": "경기도 구리시 아천동",
+  "lore": "오랫동안 마을 당산나무였으나 석유비축기지가 들어서며 출입 통제 구역에 남았다. 2024년 라이다 측정으로 실제 규모가 확인된 숨은 거목이다.",
+  "lat": 37.5681673219842,
+  "lng": 127.114324507713
+ },
+ {
+  "name": "인천 부평초등학교 은행나무",
+  "desig": "인천광역시 자연유산·보호수",
+  "kind": "시도",
+  "count": 2,
+  "ageLabel": "500~600년(2그루)",
+  "tag": "500살",
+  "h": "약 20m",
+  "c": "약 6m",
+  "addr": "인천광역시 계양구 계산동 부평초등학교",
+  "lore": "부평도호부 관아의 풍치목으로 전해지는 나무로, 정문 옆 나무는 인천광역시 자연유산으로 지정되어 있다.",
+  "lat": 37.5420331,
+  "lng": 126.7237336
+ },
+ {
+  "name": "삼척 늑구리 은행나무",
+  "desig": "강원특별자치도 기념물 제59호",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "1,000~1,500년",
+  "tag": "1000살 이상",
+  "h": "20m",
+  "c": "12.6m",
+  "addr": "강원특별자치도 삼척시 도계읍 늑구리",
+  "lore": "국내 최고령으로 알려진 은행나무다. 아직 과학적 검증은 이루어지지 않았다.",
+  "lat": 37.2655452282671,
+  "lng": 129.048793261616
+ },
+ {
+  "name": "강릉 옥천동 은행나무",
+  "desig": "강원특별자치도 자연유산",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 1,000년",
+  "tag": "1000살 이상",
+  "h": "28m",
+  "c": "약 8m",
+  "addr": "강원특별자치도 강릉시 옥천동",
+  "lore": "높이 28m에 이르는 거목으로, 옥천 마을의 당산나무다.",
+  "lat": 37.7601670517706,
+  "lng": 128.902979165105
+ },
+ {
+  "name": "전주 경기전 은행나무",
+  "desig": "전북특별자치도 보호수",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 600년",
+  "tag": "600살",
+  "h": "약 20m",
+  "c": "약 7m",
+  "addr": "전북특별자치도 전주시 완산구 경기전길",
+  "lore": "조선 태조의 사당인 경기전 일원의 고목으로, 전주 한옥마을에서 바로 볼 수 있다.",
+  "lat": 35.8152172608186,
+  "lng": 127.150912894397
+ },
+ {
+  "name": "경주 동부동 은행나무",
+  "desig": "경상북도 자연유산",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 500년",
+  "tag": "500살",
+  "h": "19m",
+  "c": "6.66m",
+  "addr": "경상북도 경주시 동부동",
+  "lore": "시범성 인근 마을의 당산나무로, 경주 도심에서 오래된 세월을 간직하고 있다.",
+  "lat": 35.8459144808759,
+  "lng": 129.212275988511
+ },
+ {
+  "name": "청도 하평리 은행나무",
+  "desig": "경상북도 자연유산",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 500년",
+  "tag": "500살",
+  "h": "약 17m",
+  "c": "약 6m",
+  "addr": "경상북도 청도군 매전면 하평리",
+  "lore": "1509년(중종 4년)에 심어진 것으로 전해진다.",
+  "lat": 35.6848860392671,
+  "lng": 128.832136891665
+ },
+ {
+  "name": "담양 후산리 은행나무",
+  "desig": "전라남도 기념물",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 600년",
+  "tag": "600살",
+  "h": "약 20m",
+  "c": "약 7m",
+  "addr": "전라남도 담양군 고서면 산덕리 485-1 (후산리)",
+  "lore": "후산 마을의 당산나무로, 봉안리 은행나무와 함께 담양의 대표 고목이다.",
+  "lat": 35.2223082,
+  "lng": 126.9954188
+ },
+ {
+  "name": "광주 칠석동 은행나무",
+  "desig": "광주광역시 기념물",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 650년",
+  "tag": "600살",
+  "h": "약 20m",
+  "c": "약 7m",
+  "addr": "광주광역시 광산구 칠석동",
+  "lore": "칠석동 마을의 당산나무로, 광주 지역 대표 고목이다.",
+  "lat": 35.0697605,
+  "lng": 126.8344378
+ },
+ {
+  "name": "대구 범어동 은행나무",
+  "desig": "대구광역시 보호수",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 600년",
+  "tag": "600살",
+  "h": "약 15m",
+  "c": "약 8m",
+  "addr": "대구광역시 수성구 범어동 범어네거리",
+  "lore": "원줄기는 오래전에 죽고 새끼줄기가 크게 자라난 나무로, 도심 네거리 한복판에 서 있다.",
+  "lat": 35.8591044,
+  "lng": 128.6261927
+ },
+ {
+  "name": "하동 청룡리 은행나무",
+  "desig": "경상남도 기념물",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 600년",
+  "tag": "600살",
+  "h": "약 20m",
+  "c": "약 7m",
+  "addr": "경상남도 하동군 청룡리",
+  "lore": "청룡 마을의 당산나무로 오랜 세월 마을 수호 신목으로 섬겨 왔다.",
+  "lat": 35.1810730424553,
+  "lng": 127.869754247694
+ },
+ {
+  "name": "태안 홍주사 은행나무",
+  "desig": "충청남도 기념물",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 900년",
+  "tag": "900살",
+  "h": "약 20m",
+  "c": "약 8m",
+  "addr": "충청남도 태안군 홍주사",
+  "lore": "홍주사 뜰에 선 사찰 수구목으로, 충남 서해안 지역의 대표 고목이다.",
+  "lat": 36.7593604,
+  "lng": 126.1960502
+ },
+ {
+  "name": "벌교 고읍리 은행나무",
+  "desig": "전라남도 기념물(구 천연기념물 제90호)",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 500년",
+  "tag": "500살",
+  "h": "약 18m",
+  "c": "약 7m",
+  "addr": "전라남도 보성군 벌교읍 고읍리 799",
+  "lore": "옛 천연기념물 제90호였다가 해제된 뒤 1994년 전라남도 기념물으로 다시 지정되었다.",
+  "lat": 34.8605491,
+  "lng": 127.3145501
+ },
+ {
+  "name": "거창 연수사 은행나무",
+  "desig": "경상남도 기념물",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 600년",
+  "tag": "600살",
+  "h": "약 20m",
+  "c": "약 7m",
+  "addr": "경상남도 거창군 남상면 연수사길 115-103",
+  "lore": "연수사(月光寺 인근) 뜰에 선 사찰 수구목이다.",
+  "lat": 35.5976049,
+  "lng": 127.9197929
+ },
+ {
+  "name": "익산 향교 은행나무",
+  "desig": "보호수",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "500~600년",
+  "tag": "500살",
+  "h": "약 18m",
+  "c": "약 7m",
+  "addr": "전북특별자치도 익산시 익산향교",
+  "lore": "향교 명륜당 앞의 풍치목으로, 지방 유생들의 학문을 굽어보던 나무다.",
+  "lat": 35.9968892,
+  "lng": 127.0585904
+ },
+ {
+  "name": "강릉 운산리 은행나무",
+  "desig": "보호수",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 600년",
+  "tag": "600살",
+  "h": "약 18m",
+  "c": "약 6m",
+  "addr": "강원특별자치도 강릉시 운산동",
+  "lore": "운산 마을의 당산나무다.",
+  "lat": 37.730968,
+  "lng": 128.9286642
+ },
+ {
+  "name": "김제 공덕면 은행나무",
+  "desig": "보호수",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 650년",
+  "tag": "600살",
+  "h": "약 20m",
+  "c": "약 7m",
+  "addr": "전북특별자치도 김제시 공덕면",
+  "lore": "공덕면 일대의 당산나무로, 김제 평야를 내려다보며 서 있다.",
+  "lat": 35.8923289838296,
+  "lng": 126.912832652393
+ },
+ {
+  "name": "부여 홍산객사 은행나무",
+  "desig": "보호수",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 750년",
+  "tag": "700살",
+  "h": "약 20m",
+  "c": "약 8m",
+  "addr": "충청남도 부여군 홍산면 홍산객사",
+  "lore": "조선시대 관가 객사가 있던 자리의 풍치목이다.",
+  "lat": 36.2158061,
+  "lng": 126.7565833
+ },
+ {
+  "name": "영천 임고서원 은행나무",
+  "desig": "보호수",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 500년",
+  "tag": "500살",
+  "h": "약 18m",
+  "c": "약 6m",
+  "addr": "경상북도 영천시 임고서원",
+  "lore": "임고서원 강당 앞에 선 나무로, 선현의 학문을 기리며 자라왔다.",
+  "lat": 36.0169644,
+  "lng": 128.9731115
+ },
+ {
+  "name": "안동 송리동 은행나무",
+  "desig": "보호수",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 680년",
+  "tag": "600살",
+  "h": "약 18m",
+  "c": "약 7m",
+  "addr": "경상북도 안동시 송현동",
+  "lore": "송리동 마을의 당산나무다.",
+  "lat": 36.5753255,
+  "lng": 128.6918887
+ },
+ {
+  "name": "팔효사 은행나무",
+  "desig": "보호수",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 500년",
+  "tag": "500살",
+  "h": "약 18m",
+  "c": "약 6m",
+  "addr": "경기도 여주시 팔효사",
+  "lore": "팔효사(八桃寺) 뜰에 선 사찰 수구목이다.",
+  "lat": 37.2941469,
+  "lng": 127.6463008
+ },
+ {
+  "name": "산청 평지리 은행나무",
+  "desig": "보호수",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 500년",
+  "tag": "500살",
+  "h": "약 18m",
+  "c": "약 6m",
+  "addr": "경상남도 산청군 평지리",
+  "lore": "평지 마을의 당산나무다.",
+  "lat": 35.4202220831738,
+  "lng": 128.012598700565
+ },
+ {
+  "name": "논산 성동 은행나무",
+  "desig": "보호수",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "450~593년",
+  "tag": "500살",
+  "h": "약 18m",
+  "c": "약 7m",
+  "addr": "충청남도 논산시 성동면 개척리",
+  "lore": "논산 성동 일대 마을의 당산나무다.",
+  "lat": 36.1903267,
+  "lng": 127.0105381
+ },
+ {
+  "name": "강남 대치동 은행나무",
+  "desig": "서울특별시 보호수",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 530년",
+  "tag": "500살",
+  "h": "약 18m",
+  "c": "약 6m",
+  "addr": "서울특별시 강남구 대치동",
+  "lore": "탄천 부근 마을 터에 남은 고목으로, 강남 도심에서 500년 이상을 견뎠다.",
+  "lat": 37.4932421505465,
+  "lng": 127.056693501258
+ },
+ {
+  "name": "영등포 은행나무",
+  "desig": "서울특별시 보호수",
+  "kind": "시도",
+  "count": 1,
+  "ageLabel": "약 530년",
+  "tag": "500살",
+  "h": "약 18m",
+  "c": "약 6m",
+  "addr": "서울특별시 영등포구",
+  "lore": "영등포 도심에서 500년이 넘는 세월을 견뎌 온 보호수다.",
+  "lat": 37.5263635705034,
+  "lng": 126.896273923703
+ }
+];
+
+/* ── 기본 지도 ── */
+const map = L.map('map', {zoomControl:false, worldCopyJump:true});
+L.control.zoom({position:'bottomright'}).addTo(map);
+const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom:19, attribution:'© OpenStreetMap 기여자'
+}).addTo(map);
+const positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  maxZoom:20, subdomains:'abcd', attribution:'© CARTO © OpenStreetMap 기여자'
+});
+L.control.layers({'오픈스트리트맵(한글)':osm, '심플 회색 지도':positron}, null, {position:'bottomright', collapsed:true}).addTo(map);
+
+/* ── 부채꼴 은행잎 SVG 마커 생성 ── */
+function makeGinkgoSvg(color, isMillennium, sz){
+  const strokeColor = isMillennium ? '#FEF08A' : '#ffffff';
+  const strokeW = isMillennium ? '2.8' : '1.6';
+  const halo = isMillennium ? '<circle cx="20" cy="18" r="16.5" fill="none" stroke="#FDE047" stroke-width="2.4" stroke-dasharray="2.5 2.5" opacity="0.95"/>' : '';
+
+  return `
+    <svg class="ginkgo-leaf-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="${sz}" height="${sz}">
+      ${halo}
+      <path d="M 20 38 C 19.5 33 19.5 28 20 25 C 16 23.5 10 20 5 15.5 C 3.5 12.5 5 7.5 10.5 5 C 14.5 3.2 18 5 20 8.5 C 22 5 25.5 3.2 29.5 5 C 35 7.5 36.5 12.5 35 15.5 C 30 20 24 23.5 20 25 C 20.5 28 20.5 33 20 38 Z"
+            fill="${color}" stroke="${strokeColor}" stroke-width="${strokeW}" stroke-linejoin="round"/>
+      <path d="M 20 25 C 17 21 11 16 7 12" stroke="rgba(255,255,255,0.52)" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M 20 25 C 18 19 14 13 11 7.5" stroke="rgba(255,255,255,0.52)" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M 20 25 L 20 10.5" stroke="rgba(255,255,255,0.56)" stroke-width="1.0" fill="none" stroke-linecap="round"/>
+      <path d="M 20 25 C 22 19 26 13 29 7.5" stroke="rgba(255,255,255,0.52)" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M 20 25 C 23 21 29 16 33 12" stroke="rgba(255,255,255,0.52)" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+    </svg>`;
+}
+
+/* ── 마커 생성 ── */
+const markers = [];
+TREES.forEach((t) => {
+  const col = COLORS[t.tag];
+  const isMill = t.tag === "1000살 이상";
+  const sz = SIZES[t.tag] || 28;
+  const icon = L.divIcon({
+    className: 'ginkgo-leaf-marker',
+    html: makeGinkgoSvg(col, isMill, sz),
+    iconSize: [sz, sz],
+    iconAnchor: [sz / 2, sz * 0.94],
+    popupAnchor: [0, -sz * 0.88]
+  });
+  const m = L.marker([t.lat, t.lng], {icon: icon});
+  m._tree = t;
+  m.bindPopup(popupHtml(t), {className:'ginkgo-popup', maxWidth:320, minWidth:230});
+  markers.push(m);
+});
+
+function popupHtml(t){
+  const col = COLORS[t.tag];
+  const cnt = t.count > 1 ? `<span class="gp-count">${t.count}그루</span>` : '';
+  const q = encodeURIComponent(t.name);
+  const headTextCol = (t.tag === '800살' || t.tag === '900살') ? '#1c1917' : '#ffffff';
+  return `
+  <div class="gp-head" style="background:linear-gradient(120deg, ${col}, #ca8a04 150%); color:${headTextCol};">
+    <span class="badge" style="border-color:currentColor; color:currentColor;">${t.tag}</span>
+    <span class="age">${t.ageLabel}</span>
+    ${cnt}
+  </div>
+  <div class="gp-title">
+    <div class="nm">${t.name}</div>
+    <span class="dz">${t.desig}</span>
+  </div>
+  <div class="gp-specs">
+    <div class="sp">수고(높이)<b>${t.h}</b></div>
+    <div class="sp">흉고둘레<b>${t.c}</b></div>
+  </div>
+  <div class="gp-addr">${t.addr}</div>
+  <div class="gp-lore">${t.lore}</div>
+  <div class="gp-links">
+    <a class="kakao" href="https://map.kakao.com/link/to/${q},${t.lat},${t.lng}" target="_blank" rel="noopener">카카오맵 길찾기</a>
+    <a class="naver" href="https://map.naver.com/p/search/${q}" target="_blank" rel="noopener">네이버지도 검색</a>
+  </div>`;
+}
+
+/* ── 태그별 카운트 ── */
+const tagCounts = {};
+ALL_TAGS.forEach(tag => tagCounts[tag] = TREES.filter(t=>t.tag===tag).length);
+
+/* ── 멀티 토글 필터 (디폴트: 600살 이상 전체 활성화) ── */
+const activeTags = new Set(["600살", "700살", "800살", "900살", "1000살 이상"]);
+const filtersEl = document.getElementById('filters');
+
+function updateFilterStyles(){
+  [...filtersEl.children].forEach(btn => {
+    const tag = btn.dataset.tag;
+    const isActive = activeTags.has(tag);
+    btn.classList.toggle('active', isActive);
+    const dot = btn.querySelector('.fdot');
+    if(isActive){
+      btn.style.background = COLORS[tag];
+      btn.style.color = BTN_TEXT_COLORS[tag] || '#fff';
+      if(dot) dot.style.background = BTN_TEXT_COLORS[tag] || '#fff';
+    } else {
+      btn.style.background = '#fff';
+      btn.style.color = (tag.startsWith('800') || tag.startsWith('900')) ? '#a16207' : COLORS[tag];
+      if(dot) dot.style.background = COLORS[tag];
+    }
+  });
+}
+
+ALL_TAGS.forEach(tag => {
+  const btn = document.createElement('button');
+  btn.className = 'fbtn';
+  btn.dataset.tag = tag;
+  const dotColor = COLORS[tag];
+  btn.innerHTML = `<span class="fdot" style="background:${dotColor}"></span>${tag} <span style="opacity:.85; font-size:.76rem;">(${tagCounts[tag]})</span>`;
+
+  btn.addEventListener('click', () => {
+    if(activeTags.has(tag)){
+      activeTags.delete(tag);
+    } else {
+      activeTags.add(tag);
+    }
+    updateFilterStyles();
+    apply();
+  });
+  filtersEl.appendChild(btn);
+});
+
+updateFilterStyles();
+
+/* ── 검색 & 필터링 적용 ── */
+const searchEl = document.getElementById('search');
+const noresult = document.getElementById('noresult');
+searchEl.addEventListener('input', apply);
+searchEl.addEventListener('keydown', e => {
+  if(e.key === 'Enter'){
+    const vis = markers.filter(m => m._visible);
+    if(vis.length === 1){ map.flyTo([vis[0]._tree.lat, vis[0]._tree.lng], 14); vis[0].openPopup(); }
+    else if(vis.length > 1){ map.fitBounds(L.featureGroup(vis).getBounds().pad(0.1)); }
+  }
+});
+
+function norm(s){ return (s||'').toLowerCase().replace(/\s+/g,''); }
+
+function apply(){
+  const q = norm(searchEl.value);
+  let visible = 0;
+  const visibleMarkers = [];
+
+  markers.forEach(m => {
+    const t = m._tree;
+    const hay = norm(t.name + ' ' + t.addr + ' ' + t.desig + ' ' + t.ageLabel);
+    const okQ = !q || hay.includes(q);
+    const okTag = activeTags.has(t.tag);
+    const ok = okQ && okTag;
+
+    m._visible = ok;
+    if(ok){
+      if(!map.hasLayer(m)) m.addTo(map);
+      visibleMarkers.push(m);
+      visible++;
+    } else {
+      if(map.hasLayer(m)) map.removeLayer(m);
+    }
+  });
+
+  noresult.style.display = visible ? 'none' : 'block';
+  return visibleMarkers;
+}
+
+const initialVis = apply();
+if(initialVis.length > 0){
+  map.fitBounds(L.featureGroup(initialVis).getBounds().pad(0.06));
+}
+
+/* ── 🍂 샛노란 은행잎 와르르 낙하 오프닝 이펙트 ── */
+(function initFallingGinkgoLeaves(){
+  const canvas = document.getElementById('leafCanvas');
+  const ctx = canvas.getContext('2d');
+  let W = canvas.width = window.innerWidth;
+  let H = canvas.height = window.innerHeight;
+
+  window.addEventListener('resize', () => {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  });
+
+  // 정통 부채꼴 은행잎 Path2D (좌표계 40x40 기준)
+  const leafPath = new Path2D("M 20 38 C 19.5 33 19.5 28 20 25 C 16 23.5 10 20 5 15.5 C 3.5 12.5 5 7.5 10.5 5 C 14.5 3.2 18 5 20 8.5 C 22 5 25.5 3.2 29.5 5 C 35 7.5 36.5 12.5 35 15.5 C 30 20 24 23.5 20 25 C 20.5 28 20.5 33 20 38 Z");
+
+  // 화사한 가을 은행잎 황금빛 팔레트
+  const leafColors = [
+    '#FACC15', // 눈부신 샛노랑
+    '#EAB308', // 깊은 황금빛 노랑
+    '#FDE047', // 맑은 레몬빛 샛노랑
+    '#F59E0B', // 짙은 앰버 골드
+    '#FEF08A'  // 햇살 비치는 밝은 노랑
+  ];
+
+  const LEAF_COUNT = 48; // 첫 오픈 때 와르르 쏟아지는 은행잎 수
+  const leaves = [];
+
+  for(let i = 0; i < LEAF_COUNT; i++){
+    leaves.push({
+      x: Math.random() * W,
+      y: -40 - Math.random() * (H * 0.9), // 화면 위쪽에서 분산 출발
+      vx: (Math.random() - 0.5) * 1.8,
+      vy: 2.2 + Math.random() * 2.8,       // 기분 좋게 쏟아지는 낙하 속도
+      size: 0.65 + Math.random() * 0.65,  // 다양한 은행잎 크기
+      angle: Math.random() * Math.PI * 2,
+      vAngle: (Math.random() - 0.5) * 0.05,
+      flip: Math.random() * Math.PI,
+      vFlip: 0.03 + Math.random() * 0.05,  // 나풀나풀 3D 입체 뒤집힘
+      swingPhase: Math.random() * Math.PI * 2,
+      swingSpeed: 0.03 + Math.random() * 0.03,
+      swingAmp: 1.5 + Math.random() * 2.2, // 좌우 살랑거리는 바람 진폭
+      color: leafColors[Math.floor(Math.random() * leafColors.length)],
+      opacity: 0.88 + Math.random() * 0.12
+    });
+  }
+
+  let startTime = performance.now();
+  const DURATION = 5200; // 약 5.2초 동안 화려하게 연출 후 부드럽게 종료
+  let animId = null;
+
+  function render(now){
+    const elapsed = now - startTime;
+    ctx.clearRect(0, 0, W, H);
+
+    // 4초 이후부터 서서히 페이드아웃
+    let globalFade = 1;
+    if(elapsed > 3800){
+      globalFade = Math.max(0, 1 - (elapsed - 3800) / 1400);
+    }
+
+    leaves.forEach(l => {
+      l.swingPhase += l.swingSpeed;
+      l.x += l.vx + Math.sin(l.swingPhase) * l.swingAmp;
+      l.y += l.vy;
+      l.angle += l.vAngle;
+      l.flip += l.vFlip;
+
+      ctx.save();
+      ctx.translate(l.x, l.y);
+      ctx.rotate(l.angle);
+      // Math.sin(flip)으로 가을바람에 은행잎이 3D로 팔랑팔랑 뒤집히는 효과
+      ctx.scale(l.size * Math.sin(l.flip), l.size);
+      ctx.globalAlpha = l.opacity * globalFade;
+
+      ctx.fillStyle = l.color;
+      ctx.shadowColor = 'rgba(40, 35, 10, 0.28)';
+      ctx.shadowBlur = 5;
+      ctx.shadowOffsetY = 2.5;
+
+      // 40x40 기준 중앙 정렬 오프셋 (-20, -20)
+      ctx.translate(-20, -20);
+      ctx.fill(leafPath);
+
+      // 연한 잎맥 라인
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(20, 25); ctx.lineTo(13, 10);
+      ctx.moveTo(20, 25); ctx.lineTo(20, 9);
+      ctx.moveTo(20, 25); ctx.lineTo(27, 10);
+      ctx.stroke();
+
+      ctx.restore();
+    });
+
+    if(elapsed < DURATION && globalFade > 0.01){
+      animId = requestAnimationFrame(render);
+    } else {
+      ctx.clearRect(0, 0, W, H);
+      canvas.remove(); // 애니메이션 완료 시 캔버스 완전 정리 (메모리·배터리 최적화)
+    }
+  }
+
+  animId = requestAnimationFrame(render);
+})();
+</script>
+</body>
+</html>
