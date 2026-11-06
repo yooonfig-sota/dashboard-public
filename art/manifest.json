@@ -1,5 +1,5 @@
 {
-  "version": 13,
+  "version": 14,
   "assets": [
     {
       "file": "room.png",
@@ -648,6 +648,48 @@
       "status": "prototype",
       "note": "4방향 16보행 + 전용 대기 몸/꼬리. 생성 원본 픽셀 유지.",
       "frames": "app/components/sprite-frames.json의 실제 알파 경계"
+    },
+    {
+      "file": "guest-cornish-rex-outfit.png",
+      "source": "AI로 생성한 독자 고양이 아틀라스",
+      "status": "prototype",
+      "note": "A는 실용 의상, B는 무의상. 4방향 16보행과 대기 몸/꼬리. 맹크스는 실제 무미종으로 꼬리 없음.",
+      "frames": "app/components/sprite-frames.json의 알파 경계"
+    },
+    {
+      "file": "guest-havana-brown-outfit.png",
+      "source": "AI로 생성한 독자 고양이 아틀라스",
+      "status": "prototype",
+      "note": "A는 실용 의상, B는 무의상. 4방향 16보행과 대기 몸/꼬리. 맹크스는 실제 무미종으로 꼬리 없음.",
+      "frames": "app/components/sprite-frames.json의 알파 경계"
+    },
+    {
+      "file": "guest-calico-outfit.png",
+      "source": "AI로 생성한 독자 고양이 아틀라스",
+      "status": "prototype",
+      "note": "A는 실용 의상, B는 무의상. 4방향 16보행과 대기 몸/꼬리. 맹크스는 실제 무미종으로 꼬리 없음.",
+      "frames": "app/components/sprite-frames.json의 알파 경계"
+    },
+    {
+      "file": "guest-manx.png",
+      "source": "AI로 생성한 독자 고양이 아틀라스",
+      "status": "prototype",
+      "note": "A는 실용 의상, B는 무의상. 4방향 16보행과 대기 몸/꼬리. 맹크스는 실제 무미종으로 꼬리 없음.",
+      "frames": "app/components/sprite-frames.json의 알파 경계"
+    },
+    {
+      "file": "guest-tonkinese.png",
+      "source": "AI로 생성한 독자 고양이 아틀라스",
+      "status": "prototype",
+      "note": "A는 실용 의상, B는 무의상. 4방향 16보행과 대기 몸/꼬리. 맹크스는 실제 무미종으로 꼬리 없음.",
+      "frames": "app/components/sprite-frames.json의 알파 경계"
+    },
+    {
+      "file": "guest-sokoke.png",
+      "source": "AI로 생성한 독자 고양이 아틀라스",
+      "status": "prototype",
+      "note": "A는 실용 의상, B는 무의상. 4방향 16보행과 대기 몸/꼬리. 맹크스는 실제 무미종으로 꼬리 없음.",
+      "frames": "app/components/sprite-frames.json의 알파 경계"
     }
   ],
   "guest_count": 35,
