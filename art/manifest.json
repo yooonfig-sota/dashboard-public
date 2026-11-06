@@ -1,5 +1,5 @@
 {
-  "version": 14,
+  "version": 15,
   "assets": [
     {
       "file": "room.png",
@@ -690,6 +690,12 @@
       "status": "prototype",
       "note": "A는 실용 의상, B는 무의상. 4방향 16보행과 대기 몸/꼬리. 맹크스는 실제 무미종으로 꼬리 없음.",
       "frames": "app/components/sprite-frames.json의 알파 경계"
+    },
+    {
+      "file": "tiles/ginkgo-seasons.webp",
+      "source": "사용자 요청으로 생성한 독자적인 사계절 은행나무 도트 아틀라스",
+      "status": "prototype",
+      "note": "4열 변형 × 봄/여름/가을/겨울 4행. 잎이 풍성한 수직형 은행나무, 고정 군락 43그루. 실제 알파 경계로 분리해 원본 비율을 유지한다. 생성 도구의 원본을 보존하고 lossless WebP로 배포."
     }
   ],
   "guest_count": 35,
