@@ -1,5 +1,5 @@
 {
-  "version": 16,
+  "version": 17,
   "assets": [
     {
       "file": "room.png",
@@ -702,6 +702,12 @@
       "source": "직접 제작한 32px 격자 원본 은행잎 도트 SVG",
       "status": "prototype",
       "note": "가을 은행잎 이벤트의 고정 타일 아이템. 황금빛 부채꼴 잎·잎맥·줄기·땅 그림자, 외부 게임 에셋 미사용."
+    },
+    {
+      "file": "tiles/ginkgo-map-sign.svg",
+      "source": "Original pixel SVG drawn in project",
+      "status": "prototype",
+      "note": "가을 은행나무 지도 표지판: 나무 게시판·접힌 지도·은행잎, 외부 게임 에셋 없음"
     }
   ],
   "guest_count": 35,
