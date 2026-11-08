@@ -708,6 +708,12 @@
       "source": "Original pixel SVG drawn in project",
       "status": "prototype",
       "note": "가을 은행나무 지도 표지판: 나무 게시판·접힌 지도·은행잎, 외부 게임 에셋 없음"
+    },
+    {
+      "file": "tiles/subtle-egg.png",
+      "source": "AI-generated edit of the existing hatch egg for the no-spend trial",
+      "status": "prototype",
+      "note": "은은한 푸른빛·연보랏빛의 A/S 전용 보상 알. 기존 알 파일은 유지."
     }
   ],
   "guest_count": 35,
