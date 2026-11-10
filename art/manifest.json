@@ -717,5 +717,5 @@
     }
   ],
   "guest_count": 35,
-  "guest_catalogue": "app/content/guest-cats.json"
+  "guest_catalogue": "game/cats/catalogue.json"
 }
