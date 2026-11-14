@@ -1,5 +1,5 @@
 {
-  "version": 17,
+  "version": 19,
   "assets": [
     {
       "file": "room.png",
@@ -42,7 +42,14 @@
         "columns": 3,
         "rows": 2
       },
-      "actions": ["rest", "sleep", "eat", "exercise", "read", "work"],
+      "actions": [
+        "rest",
+        "sleep",
+        "eat",
+        "exercise",
+        "read",
+        "work"
+      ],
       "note": "Actual component rectangles, not uniform cells. Index 0 is replaced by dedicated idle rig."
     },
     {
@@ -714,6 +721,24 @@
       "source": "AI-generated edit of the existing hatch egg for the no-spend trial",
       "status": "prototype",
       "note": "은은한 푸른빛·연보랏빛의 A/S 전용 보상 알. 기존 알 파일은 유지."
+    },
+    {
+      "file": "churu.svg",
+      "source": "직접 제작한 원본 픽셀 SVG",
+      "status": "prototype",
+      "note": "일반 츄르 아이콘. 상점 주인은 기존 British 스프라이트와 신규 CSS 앞치마를 조합하며 원본 이미지는 수정하지 않음."
+    },
+    {
+      "file": "shop-exterior.webp",
+      "source": "기존 마을 props-autumn.webp를 스타일 참조해 이미지 생성 도구로 새로 제작한 고양이 용품점",
+      "status": "prototype",
+      "note": "세밀한 초록 기와·목재·석재·조명·발바닥 간판. 투명 배경. 원본 PNG는 generated_images에 보존하고 lossless WebP로 배포."
+    },
+    {
+      "file": "shop-interior.webp",
+      "source": "기존 room-no-left-window.png를 스타일 참조해 이미지 생성 도구로 새로 제작한 용품점 실내",
+      "status": "prototype",
+      "note": "식기·침구·캐리어·장난감 등 다양한 용품 진열. 문자·특정 상품명·캐릭터가 없는 배경. 계산대 앞판은 같은 이미지 레이어로 NPC를 자연스럽게 가린다. 원본 PNG 보존, lossless WebP."
     }
   ],
   "guest_count": 35,
