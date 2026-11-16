@@ -1,10 +1,11 @@
 {
-  "release": "baker-specialties-phase22-2026-11-16",
-  "sourceCommit": "6e9e56e6a649cb8f857f7d4ddd4ce7098f78d788",
-  "sourceBranch": "feat/baker-unique-specialties",
-  "implementationCommit": "449ff4ac389ceff53f618b400b8b986eea64299d",
-  "workerVersion": "7285ffcf-de73-40a4-b723-f2e58b201a76",
+  "release": "young-rich-churu-2026-11-16",
+  "sourceCommit": "a01a55fc783108bf4f47d00148cd6928d14622b3",
+  "sourceBranch": "feat/young-rich-premium-churu",
+  "implementationCommit": "f05ee01b72781359df24a0e53b2aa9853769ed22",
+  "workerVersion": "54c9947c-1231-47a0-9203-53e517780b50",
   "bakeryWageBonusFrom": "2026-11-16T05:06:10.000Z",
+  "lifeIncomeBonusFrom": "2026-11-16T23:07:00.000Z",
   "includedPRs": [
     90,
     91,
@@ -12,7 +13,8 @@
     93,
     95,
     96,
-    97
+    97,
+    98
   ],
   "excludedPRs": [
     84,
@@ -20,5 +22,5 @@
     88,
     89
   ],
-  "builtAt": "2026-11-16T14:03:16.267959Z"
+  "builtAt": "2026-11-16T23:03:46.033966+00:00"
 }
