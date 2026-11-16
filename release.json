@@ -1,13 +1,15 @@
 {
-  "release": "careers-bakery-2026-11-16",
-  "sourceCommit": "5c177eccb37700cf03bf039de25f2affc6b393d2",
-  "sourceBranch": "release/careers-bakery-2026-11-16",
-  "workerVersion": "14a01f87-6085-481d-afb8-d2898d5ee361",
+  "release": "bakery-shift-ui-wages-2026-11-16",
+  "sourceCommit": "d427489ab6611b73d1ad1fedf848a16a663d2daa",
+  "sourceBranch": "feat/bakery-shift-ui-wage",
+  "workerVersion": "3cda036c-dfb1-4726-8593-ee3bc70d9ae2",
+  "bakeryWageBonusFrom": "2026-11-16T05:06:10.000Z",
   "includedPRs": [
     90,
     91,
     92,
-    93
+    93,
+    95
   ],
   "excludedPRs": [
     84,
@@ -15,5 +17,5 @@
     88,
     89
   ],
-  "builtAt": "2026-11-16T03:54:40.765971+00:00"
+  "builtAt": "2026-11-16T05:05:16.265781+00:00"
 }
