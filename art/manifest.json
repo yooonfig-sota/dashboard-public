@@ -739,6 +739,12 @@
       "source": "기존 room-no-left-window.png를 스타일 참조해 이미지 생성 도구로 새로 제작한 용품점 실내",
       "status": "prototype",
       "note": "식기·침구·캐리어·장난감 등 다양한 용품 진열. 문자·특정 상품명·캐릭터가 없는 배경. 계산대 앞판은 같은 이미지 레이어로 NPC를 자연스럽게 가린다. 원본 PNG 보존, lossless WebP."
+    },
+    {
+      "file": "bakery/lobby.webp",
+      "source": "기존 베이커리·용품점 실내를 참조해 이미지 생성 도구로 제작한 독자 로비",
+      "status": "prototype",
+      "note": "1210×1300. 원본 assets-source/bakery/lobby.png 보존. 빵 진열대·계산대·작업대·오븐과 통로. 캐릭터는 공식 스프라이트 별도 레이어. 기존 타이쿤 배경 유지."
     }
   ],
   "guest_count": 35,

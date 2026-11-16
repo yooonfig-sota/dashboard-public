@@ -1,0 +1,19 @@
+{
+  "release": "careers-bakery-2026-11-16",
+  "sourceCommit": "5c177eccb37700cf03bf039de25f2affc6b393d2",
+  "sourceBranch": "release/careers-bakery-2026-11-16",
+  "workerVersion": "14a01f87-6085-481d-afb8-d2898d5ee361",
+  "includedPRs": [
+    90,
+    91,
+    92,
+    93
+  ],
+  "excludedPRs": [
+    84,
+    87,
+    88,
+    89
+  ],
+  "builtAt": "2026-11-16T03:54:40.765971+00:00"
+}
