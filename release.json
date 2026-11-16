@@ -1,9 +1,9 @@
 {
-  "release": "cat-punch-retirement-2026-11-16",
-  "sourceCommit": "8195948a073b8eb95220906012258b770373a7af",
-  "sourceBranch": "refactor/remove-cat-punch",
-  "implementationCommit": "2e6a1821dd1440ddbbd3fe2c35e66f0179c95ff1",
-  "workerVersion": "53050541-7e64-4e62-92fe-d488a9721157",
+  "release": "baker-specialties-phase22-2026-11-16",
+  "sourceCommit": "6e9e56e6a649cb8f857f7d4ddd4ce7098f78d788",
+  "sourceBranch": "feat/baker-unique-specialties",
+  "implementationCommit": "449ff4ac389ceff53f618b400b8b986eea64299d",
+  "workerVersion": "7285ffcf-de73-40a4-b723-f2e58b201a76",
   "bakeryWageBonusFrom": "2026-11-16T05:06:10.000Z",
   "includedPRs": [
     90,
@@ -11,7 +11,8 @@
     92,
     93,
     95,
-    96
+    96,
+    97
   ],
   "excludedPRs": [
     84,
@@ -19,5 +20,5 @@
     88,
     89
   ],
-  "builtAt": "2026-11-16T09:49:25.369377Z"
+  "builtAt": "2026-11-16T14:03:16.267959Z"
 }
