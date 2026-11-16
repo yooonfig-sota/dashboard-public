@@ -1,15 +1,17 @@
 {
-  "release": "bakery-shift-ui-wages-2026-11-16",
-  "sourceCommit": "d427489ab6611b73d1ad1fedf848a16a663d2daa",
-  "sourceBranch": "feat/bakery-shift-ui-wage",
-  "workerVersion": "3cda036c-dfb1-4726-8593-ee3bc70d9ae2",
+  "release": "cat-punch-retirement-2026-11-16",
+  "sourceCommit": "8195948a073b8eb95220906012258b770373a7af",
+  "sourceBranch": "refactor/remove-cat-punch",
+  "implementationCommit": "2e6a1821dd1440ddbbd3fe2c35e66f0179c95ff1",
+  "workerVersion": "53050541-7e64-4e62-92fe-d488a9721157",
   "bakeryWageBonusFrom": "2026-11-16T05:06:10.000Z",
   "includedPRs": [
     90,
     91,
     92,
     93,
-    95
+    95,
+    96
   ],
   "excludedPRs": [
     84,
@@ -17,5 +19,5 @@
     88,
     89
   ],
-  "builtAt": "2026-11-16T05:05:16.265781+00:00"
+  "builtAt": "2026-11-16T09:49:25.369377Z"
 }
