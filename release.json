@@ -1,9 +1,10 @@
 {
-  "release": "young-rich-churu-2026-11-16",
-  "sourceCommit": "a01a55fc783108bf4f47d00148cd6928d14622b3",
-  "sourceBranch": "feat/young-rich-premium-churu",
-  "implementationCommit": "f05ee01b72781359df24a0e53b2aa9853769ed22",
-  "workerVersion": "54c9947c-1231-47a0-9203-53e517780b50",
+  "release": "bakery-interview-duo-2026-11-17",
+  "sourceCommit": "32dea166f6d1d55921c0cb3de6ea65edb01ad474",
+  "sourceBranch": "feat/bakery-interview-duo",
+  "implementationCommit": "32dea166f6d1d55921c0cb3de6ea65edb01ad474",
+  "workerVersion": "b772ced2-f6a3-4187-865f-038f7f479513",
+  "recoveryWorkerVersion": "9253e50c-4fcb-438e-a1b5-f7a28d67a788",
   "bakeryWageBonusFrom": "2026-11-16T05:06:10.000Z",
   "lifeIncomeBonusFrom": "2026-11-16T23:07:00.000Z",
   "includedPRs": [
@@ -14,7 +15,8 @@
     95,
     96,
     97,
-    98
+    98,
+    99
   ],
   "excludedPRs": [
     84,
@@ -22,5 +24,5 @@
     88,
     89
   ],
-  "builtAt": "2026-11-16T23:03:46.033966+00:00"
+  "builtAt": "2026-11-17T12:06:54.162417+00:00"
 }
