@@ -1,9 +1,9 @@
 {
   "release": "bakery-auto-dispatch-2026-11-17",
-  "sourceCommit": "ebc90094882622e9254fbdd525742562108b2266",
+  "sourceCommit": "a5fd9aa198d8f042233426aec9c49007e61d715c",
   "sourceBranch": "feat/bakery-interview-duo",
-  "implementationCommit": "ebc90094882622e9254fbdd525742562108b2266",
-  "workerVersion": "83e39fb5-85e6-44e0-a5a2-d4648300f50b",
+  "implementationCommit": "a5fd9aa198d8f042233426aec9c49007e61d715c",
+  "workerVersion": "bcf8d98c-df0f-4a23-b95c-23521963a99e",
   "recoveryWorkerVersion": "c5192749-626b-46e2-980e-d9fa0b9a4cff",
   "bakeryWageBonusFrom": "2026-11-16T05:06:10.000Z",
   "lifeIncomeBonusFrom": "2026-11-16T23:07:00.000Z",
@@ -26,5 +26,5 @@
   ],
   "bakeryAutoRetryFrom": "2026-11-17T13:30:37.000Z",
   "bakeryAutoRetryPolicy": "auto-dispatch-retry-2026-11-17",
-  "builtAt": "2026-11-17T13:30:22.002315+00:00"
+  "builtAt": "2026-11-17T13:42:01.455228+00:00"
 }
