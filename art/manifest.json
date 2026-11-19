@@ -1,5 +1,5 @@
 {
-  "version": 19,
+  "version": 20,
   "assets": [
     {
       "file": "room.png",
@@ -745,6 +745,12 @@
       "source": "기존 베이커리·용품점 실내를 참조해 이미지 생성 도구로 제작한 독자 로비",
       "status": "prototype",
       "note": "1210×1300. 원본 assets-source/bakery/lobby.png 보존. 빵 진열대·계산대·작업대·오븐과 통로. 캐릭터는 공식 스프라이트 별도 레이어. 기존 타이쿤 배경 유지."
+    },
+    {
+      "file": "tiles/welcome-egg.png",
+      "source": "image_gen으로 제작한 Jellyhouse 전용 환영 선물 알",
+      "status": "prototype",
+      "note": "투명 배경 PNG 원본. 크림 껍데기·세이지 반점·리본·밀 이삭 메달. 기존 알·고양이 원본은 변경하지 않음."
     }
   ],
   "guest_count": 35,
