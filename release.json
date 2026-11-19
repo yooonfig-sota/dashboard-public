@@ -1,10 +1,10 @@
 {
-  "release": "welcome-eggs-bakery-flow-2026-11-19",
-  "sourceCommit": "2b78154110eadc3f9c5f627e722b84b5c641b5af",
-  "sourceBranch": "feat/welcome-eggs-bakery-flow",
-  "implementationCommit": "2b78154110eadc3f9c5f627e722b84b5c641b5af",
-  "workerVersion": "6e46a0bc-7692-440b-8a59-2a5ce03329c8",
-  "recoveryWorkerVersion": "7dc28957-12bd-4225-af52-8470f2b3c222",
+  "release": "bakery-crew-ux-2026-11-19",
+  "sourceCommit": "76b06d0318e8a8a200687b8a7d7b5ad1d1fcc3b3",
+  "sourceBranch": "feat/bakery-crew-ux",
+  "implementationCommit": "76b06d0318e8a8a200687b8a7d7b5ad1d1fcc3b3",
+  "workerVersion": "f3985a47-3415-4c8c-a76b-5245909717ee",
+  "recoveryWorkerVersion": "c508d7e2-ecc3-4fae-9268-1fc95523f678",
   "bakeryWageBonusFrom": "2026-11-16T05:06:10.000Z",
   "lifeIncomeBonusFrom": "2026-11-16T23:07:00.000Z",
   "includedPRs": [
@@ -17,7 +17,8 @@
     97,
     98,
     99,
-    100
+    100,
+    101
   ],
   "excludedPRs": [
     84,
@@ -27,5 +28,5 @@
   ],
   "bakeryAutoRetryFrom": "2026-11-17T13:30:37.000Z",
   "bakeryAutoRetryPolicy": "auto-dispatch-retry-2026-11-17",
-  "builtAt": "2026-11-19T08:58:34.321507+00:00"
+  "builtAt": "2026-11-19T09:44:15.638070+00:00"
 }
