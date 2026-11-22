@@ -1,8 +1,8 @@
 {
-  "release": "access-visitor-identity-2026-11-22",
-  "sourceCommit": "296be56783e6426e1ce8d8d38e88b65191372570",
-  "sourceBranch": "feat/access-log-visitor-id",
-  "implementationCommit": "296be56783e6426e1ce8d8d38e88b65191372570",
+  "release": "visitor-ledger-chart-only-2026-11-22",
+  "sourceCommit": "3681d17a1ef8822d817a4c99554bae627f0bfa0a",
+  "sourceBranch": "feat/visitor-ledger-chart-only",
+  "implementationCommit": "3681d17a1ef8822d817a4c99554bae627f0bfa0a",
   "workerVersion": "833cb5ba-6d15-45fb-b0c8-2615312c29a1",
   "recoveryWorkerVersion": "0dc474b2-498b-4f40-901d-d4f046d01a75",
   "bakeryWageBonusFrom": "2026-11-16T05:06:10Z",
@@ -21,7 +21,8 @@
     101,
     102,
     103,
-    105
+    105,
+    106
   ],
   "excludedPRs": [
     84,
@@ -31,5 +32,5 @@
   ],
   "bakeryAutoRetryFrom": "2026-11-17T13:30:37Z",
   "bakeryAutoRetryPolicy": "auto-dispatch-retry-2026-11-17",
-  "builtAt": "2026-11-22T07:38:52.0154534Z"
+  "builtAt": "2026-11-22T08:15:53.2825712Z"
 }
