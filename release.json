@@ -1,12 +1,12 @@
 {
-  "release": "east-village-expansion-2026-11-21",
-  "sourceCommit": "5be000b61d07c9f92b07fd7ede2c6ec817ef98e1",
-  "sourceBranch": "feat/east-village-expansion",
-  "implementationCommit": "5be000b61d07c9f92b07fd7ede2c6ec817ef98e1",
-  "workerVersion": "c80be230-cd84-4b2d-9128-b424b6c62749",
-  "recoveryWorkerVersion": "a8369f52-b2e6-40e0-85f3-616f3aa5ae81",
-  "bakeryWageBonusFrom": "2026-11-16T05:06:10.000Z",
-  "lifeIncomeBonusFrom": "2026-11-16T23:07:00.000Z",
+  "release": "collector-ledger-sleep-2026-11-22",
+  "sourceCommit": "0a5a3a710bdb525211c88cdc9b008aa2500b1728",
+  "sourceBranch": "feat/collector-ledger-sleep",
+  "implementationCommit": "0a5a3a710bdb525211c88cdc9b008aa2500b1728",
+  "workerVersion": "aa4bba47-c42c-4843-aa39-32e12194064d",
+  "recoveryWorkerVersion": "c80be230-cd84-4b2d-9128-b424b6c62749",
+  "bakeryWageBonusFrom": "2026-11-16T05:06:10Z",
+  "lifeIncomeBonusFrom": "2026-11-16T23:07:00Z",
   "includedPRs": [
     90,
     91,
@@ -19,7 +19,8 @@
     99,
     100,
     101,
-    102
+    102,
+    103
   ],
   "excludedPRs": [
     84,
@@ -27,7 +28,7 @@
     88,
     89
   ],
-  "bakeryAutoRetryFrom": "2026-11-17T13:30:37.000Z",
+  "bakeryAutoRetryFrom": "2026-11-17T13:30:37Z",
   "bakeryAutoRetryPolicy": "auto-dispatch-retry-2026-11-17",
-  "builtAt": "2026-11-21T11:43:08.121675+00:00"
+  "builtAt": "2026-11-22T06:06:58.8066619Z"
 }
