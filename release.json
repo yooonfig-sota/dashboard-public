@@ -1,10 +1,10 @@
 {
-  "release": "visitor-ledger-chart-only-2026-11-22",
-  "sourceCommit": "3681d17a1ef8822d817a4c99554bae627f0bfa0a",
-  "sourceBranch": "feat/visitor-ledger-chart-only",
-  "implementationCommit": "3681d17a1ef8822d817a4c99554bae627f0bfa0a",
-  "workerVersion": "833cb5ba-6d15-45fb-b0c8-2615312c29a1",
-  "recoveryWorkerVersion": "0dc474b2-498b-4f40-901d-d4f046d01a75",
+  "release": "alchemy-and-supply-shop-2026-11-23",
+  "sourceCommit": "9307dfcf948ae29b115dcaba2c07481682dfe42b",
+  "sourceBranch": "feat/arca-workshop-menu",
+  "implementationCommit": "9307dfcf948ae29b115dcaba2c07481682dfe42b",
+  "workerVersion": "3f8a76ed-98ba-49d1-b010-7e22e730205b",
+  "recoveryWorkerVersion": "1e19bdd4-c6db-4a63-bcca-0641800dc710",
   "bakeryWageBonusFrom": "2026-11-16T05:06:10Z",
   "lifeIncomeBonusFrom": "2026-11-16T23:07:00Z",
   "includedPRs": [
@@ -22,7 +22,10 @@
     102,
     103,
     105,
-    106
+    106,
+    109,
+    110,
+    111
   ],
   "excludedPRs": [
     84,
@@ -32,5 +35,5 @@
   ],
   "bakeryAutoRetryFrom": "2026-11-17T13:30:37Z",
   "bakeryAutoRetryPolicy": "auto-dispatch-retry-2026-11-17",
-  "builtAt": "2026-11-22T08:15:53.2825712Z"
+  "builtAt": "2026-11-23T11:00:29.3545093Z"
 }
