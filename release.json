@@ -1,8 +1,8 @@
 {
-  "release": "interior-tiles-bakery-routine-2026-11-26",
-  "sourceCommit": "6531b77f6b8007e04e47821644328f7c475559e8",
-  "sourceBranch": "feat/interior-tiles-bakery-routine",
-  "implementationCommit": "6531b77f6b8007e04e47821644328f7c475559e8",
+  "release": "paw-tiles-village-routines-2026-11-27",
+  "sourceCommit": "2b0c79bee75403ca5a51bbd24e5f1094091f8bd0",
+  "sourceBranch": "feat/paw-tiles-village-routines",
+  "implementationCommit": "2b0c79bee75403ca5a51bbd24e5f1094091f8bd0",
   "workerVersion": "8df48fa3-edb7-4719-a3e6-c278d79d1895",
   "recoveryWorkerVersion": "3f8a76ed-98ba-49d1-b010-7e22e730205b",
   "bakeryWageBonusFrom": "2026-11-16T05:06:10Z",
@@ -29,7 +29,8 @@
     112,
     113,
     114,
-    115
+    115,
+    116
   ],
   "excludedPRs": [
     84,
@@ -39,7 +40,7 @@
   ],
   "bakeryAutoRetryFrom": "2026-11-17T13:30:37Z",
   "bakeryAutoRetryPolicy": "auto-dispatch-retry-2026-11-17",
-  "builtAt": "2026-11-26T04:14:27.658968Z",
-  "previousPagesCommit": "d6435a8131a03d3fbf43e5a52f4fdb676d9db3a0",
+  "builtAt": "2026-11-26T22:59:41.000570Z",
+  "previousPagesCommit": "431736ddb24c8e301d38e2db0557af394047bbb6",
   "workerSourceCommit": "883e0f66d279fbdbe07242b17fca9f70f995488d"
 }
