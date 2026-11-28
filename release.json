@@ -1,8 +1,8 @@
 {
-  "release": "bag-batch-hatch-2026-11-28",
-  "sourceCommit": "a35d5927ab8b7fb846ba73adb175ea2787a6c39a",
-  "sourceBranch": "feat/bag-batch-hatch",
-  "implementationCommit": "a35d5927ab8b7fb846ba73adb175ea2787a6c39a",
+  "release": "bag-batch-hatch-art-2026-11-28",
+  "sourceCommit": "cfd28494e885ecb631aba02782c6d8cd1d8d5c4c",
+  "sourceBranch": "fix/bag-batch-hatch-art",
+  "implementationCommit": "cfd28494e885ecb631aba02782c6d8cd1d8d5c4c",
   "workerVersion": "af3516f9-739d-4fdd-ba90-db87690b1c93",
   "recoveryWorkerVersion": "8df48fa3-edb7-4719-a3e6-c278d79d1895",
   "bakeryWageBonusFrom": "2026-11-16T05:06:10Z",
@@ -31,7 +31,8 @@
     114,
     115,
     116,
-    117
+    117,
+    118
   ],
   "excludedPRs": [
     84,
@@ -41,7 +42,7 @@
   ],
   "bakeryAutoRetryFrom": "2026-11-17T13:30:37Z",
   "bakeryAutoRetryPolicy": "auto-dispatch-retry-2026-11-17",
-  "builtAt": "2026-11-28T00:04:12.579086Z",
-  "previousPagesCommit": "f38db68b1a2db5783d424a9ebb2e51e56f0691a1",
+  "builtAt": "2026-11-28T08:20:20.242672Z",
+  "previousPagesCommit": "e8382785863cde42a3d81e30a404bb6ad71194c6",
   "workerSourceCommit": "a35d5927ab8b7fb846ba73adb175ea2787a6c39a"
 }
